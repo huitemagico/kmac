@@ -1,11 +1,26 @@
 #![no_std]
 // rev. 28102023 20:41
+// rev 31102023 11:57 tratando de meter auth aqui
+// 01112023 19:33 
+// (a)receive 2 parameters more, same as auth example 
+// see runk1.sh for more details
+// (b)Nothing more about auth. 
+// Pending issue, dealing with adm and normal user
+
+
+// 01112023 receive 2 parameters more, same as auth example :-|
 mod mimodulo;
 //use core::simd::i16x32;
-
-use soroban_sdk::{contract, contractimpl, symbol_short, vec, Env, String, Symbol, Vec,log};
-//use soroban_sdk::{log, Env};
-
+//#![no_std]
+//
+use soroban_sdk::{contract, contractimpl,contracttype, Address, symbol_short, vec, Env, String, Symbol, Vec,log};
+//----use-----------
+#[contracttype]
+//----contracttype----
+pub enum DataKey {
+    Counter(Address),
+}
+// https://docs.rs/soroban-sdk/20.0.0-rc2/soroban_sdk/attr.contracttype.html
 
 use mimodulo::plus_two;
 //
@@ -30,10 +45,14 @@ mod test;
 
 #[contract]
 pub struct Echo2Contract;
+// (3) #contract  pub struct ---------
+// #[contract]
+// pub struct IncrementContract;
 
 #[contractimpl]
 impl Echo2Contract {
-    pub fn echo2(env: Env, message: String, trx:String ) -> (  u32,u32, u32, u32, Vec<String>, bool,i32,i32,i32,i32,i32,i32) {
+       pub fn echo2    (env: Env,  user: Address, value: u32, message: String, trx:String ) -> 
+       (  u32,u32, u32, u32, Vec<String>, bool,i32,i32,i32,i32,i32,i32) {
  // 
 
 log!(&env, "a logggggggggggggggggggggggggggggggg entry");
@@ -55,7 +74,7 @@ log!(&env, "a logggggggggggggggggggggggggggggggg entry");
     let string00 = String::from_slice(&env, "00");
 //
 
-  let        mut           matrix: [[String; 3]; 2] = [[
+  let  mut  matrix: [[String; 3]; 2] = [[
      string11,string12,string13],[string21,string22,string23 ]];
 //
 log!(&env, "logg standard default init values for the matrix number");

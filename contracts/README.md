@@ -97,3 +97,6 @@ Brief Description: This document serves as a comprehensive manual that provides 
 How to Measure Completion: This deliverable will be posted in the GitHub repository of the KMAC project and announced in the Stellar discussion <br />chat.
 Estimated Date of Completion: December 8 2023 (+1 week)<br />
 
+Actualizado en (20231101195818)
+Actualizado en (20231101200440)
+Actualizado en (20231101200621)
