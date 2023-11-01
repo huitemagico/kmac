@@ -64,4 +64,36 @@ soroban contract invoke \ <br />
  (you must edit run0.sh with the identities obtained in the precedent paragraph)
 
  
+# Deliverables
+
+## Deliverable 1: Proof of Concept (POC) for Design Pattern Implementation
+
+Brief Description: Design, coding, and documentation of functional code components using soroban-sdk.   <br />
+This includes the following features:<br />
+
+Security – Allow List Implementation & Role-Based Access Control <br />
+Modularity – Implementation of internal and external functions (basic structure) <br />
+Incorporating parametric components with declarative functionality to enable the use of extensible functions with component reuse. <br />
+Testing of the previous modules <br />
+How to measure completion: <br />
+Code and tests available in https://github.com/huitemagico/kmac <br />
+Announcement in Stellar Development Discord <br />
+Documentation published in dev.to and on KMAC github repository <br />
+Estimated date of completion: November 10 2023 (2 weeks from october 27, 2023) <br />
+
+## Deliverable 2: Functional KMAC Program for Vending Machine Example (Sandbox) <br />
+Brief Description: A soroban-sdk smart contract with hard-coded parameters that define states and transactions for the vending machine example. <br />
+ The program is designed to accept transactions from a test module and respond with the new state. 
+ Exception conditions are not handled in this version.<br />
+How to Measure Completion:<br />
+Code and tests available in https://github.com/huitemagico/kmac <br />
+Announcement in Stellar Development Discord <br />
+Documentation published in dev.to and on KMAC github repository <br />
+Estimated Date of Completion: December 01 2023 (+3 weeks) <br />
+
+
+## Deliverable 3: Documentation Manual for KMAC Usage
+Brief Description: This document serves as a comprehensive manual that provides detailed instructions on working with the KMAC template. It <br />includes information on the various modules, setting new parameters for building different FSMs, reusing design pattern components, and extending <br />functionality. The document also discusses storage alternatives and considerations for network and stand-alone environments.<br />
+How to Measure Completion: This deliverable will be posted in the GitHub repository of the KMAC project and announced in the Stellar discussion <br />chat.
+Estimated Date of Completion: December 8 2023 (+1 week)<br />
 
