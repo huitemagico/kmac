@@ -5,14 +5,14 @@ KMAC is a program build with SOROBAN-SDK that makes an  implementation of an Fin
 Please see the file ./contracts/README.md for project documentation and updates.
 --------------------------------------------------------------------------------
 
-28/10 begin with updating periodical
-Testing back script
-Updating (20231028195408)
-test 2
-test 3
-Updating (20231028201627)
-test 4
-Actualizado en (20231028202108)
-test 5
-Actualizado en (20231028202258)
-Actualizado en (20231028204224)
+28/10 begin with updating periodical <br />
+Testing back script <br />
+Updating (20231028195408) <br />
+test 2 <br />
+test 3 <br />
+Updating (20231028201627) <br />
+test 4 <br />
+Actualizado en (20231028202108) <br />
+test 5 <br />
+Actualizado en (20231028202258) <br />
+Actualizado en (20231028204224) <br />
