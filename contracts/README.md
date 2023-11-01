@@ -1,3 +1,13 @@
 contracts/READ.ME
-Here will come every component of kmac
+Here will come every component of kmac.
+The above directory become obsolete.
++-------+
+| kmac  |
++-------+
+    |
+    |
+    +------------contracts
+                 |
+                 |
+                 +------src
 
