@@ -1,40 +1,26 @@
 # kmac
-KMAC is a program build with SOROBAN-SDK that makes an  implementation of an Finite State Machine template,  using knowed design pattern and providing extensible functions capabilities. <br />
-## inspiring codes from:
-  https://soroban.stellar.org/docs/basic-tutorials/auth
+README.md Version November 02, 2023<br />
 
-## news
----------------------<br />
-01/10/2023 note BEGIN <br />
-important  <br />
---------------------- <br />
-new folder contracts <br />
-contracts/READ.ME <br />
-Here will come every component of kmac. <br />
-The directory ../README.md contains log of the updates. <br />
-## diagram
-+-------+<br />
-| kmac  |<br />
-+-------+<br />
-    |<br />
-    |<br />
-    +------------contracts<br />
-                 |<br />
-                 |<br />
-                 +------src<br />
-01/10/2023 note  END<br />
+# Introduction
+ 
+## What is KMAC?
+`@kmac` is a contract build with SOROBAN-SDK that makes an  implementation of an Finite State Machine template,  using knowed design pattern and providing extensible functions capabilities. <br />
+[GitHub url](https://github.com/huitemagico/kmac)
 
-## 01/10/2023 technical notes.<br />
-Version 01/10/2023 notes<br />
--contains a first coding for auth function.<br />
--accept 2 first parameters auth style<br />
+![Kmac architecture](pictures/echo2state99.png)
+![My Image](pictures/my-image.png)
 
+# Usage:
+## Fast setup 
+  Here comes brief description how setup and run<br />
+  Note: If you want to access a comprehensive documentation for installing all the necessary tools to run the program, 
+  please refer to complete tutorial on this same site.<br />
 
- ## fast setup
-  Here comes description how setup and run<br />
+  The steps are: 
+
  1) cargo test <br />
  2) soroban contract build<br /> 
- 3) identities <br />
+ 3) identities setup:<br />
 We need to set up some identities to use for testing and get their public keys: <br />
 
 soroban config identity generate acc1 && \ <br />
@@ -42,7 +28,7 @@ soroban config identity generate acc2 && \ <br />
 soroban config identity address acc1 && \ <br />
 soroban config identity address acc2 <br />
 
- You must copy the string obtained and then insert in the run0.sh script <br />
+ 4) You must copy the string obtained and then insert in the run0.sh script <br />
  (see The shells paragraph) <br />
 
 soroban contract invoke \ <br />
@@ -56,8 +42,10 @@ soroban contract invoke \ <br />
     --message "reset" \ <br />
     --trx "ab" <br />
 
-## The shells
--shells: are basic development and test utility shell script.<br />
+ 5) run the run0.sh
+
+## About the shells
+ The following shells are basic development and test utility shell scripts.<br />
  compi.sh for compiling<br />
  bld.sh   for build<br />
  run0.sh  for run<br />
@@ -97,6 +85,31 @@ Brief Description: This document serves as a comprehensive manual that provides 
 How to Measure Completion: This deliverable will be posted in the GitHub repository of the KMAC project and announced in the Stellar discussion <br />chat.
 Estimated Date of Completion: December 8 2023 (+1 week)<br />
 
-Actualizado en (20231101195818)
-Actualizado en (20231101200440)
-Actualizado en (20231101200621)
+# Links related with KMAC
+  https://soroban.stellar.org/docs/basic-tutorials/auth
+
+## news
+---------------------<br />
+01/10/2023 note BEGIN <br />
+important  <br />
+--------------------- <br />
+new folder contracts <br />
+contracts/READ.ME <br />
+Here will come every component of kmac. <br />
+The directory ../README.md contains log of the updates. <br />
+## diagram
++-------+<br />
+| kmac  |<br />
++-------+<br />
+    |<br />
+    |<br />
+    +------------contracts<br />
+                 |<br />
+                 |<br />
+                 +------src<br />
+01/10/2023 note  END<br />
+
+## 01/10/2023 technical notes.<br />
+Version 01/10/2023 notes<br />
+-contains a first coding for auth function.<br />
+-accept 2 first parameters auth style<br />
