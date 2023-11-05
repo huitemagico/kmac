@@ -1,4 +1,4 @@
-soroban config identity generate acc1 && \
-soroban config identity generate acc2 && \
-soroban config identity address acc1 && \
-soroban config identity address acc2
+soroban config identity generate kreator && \
+soroban config identity generate buyer && \
+soroban config identity address kreator && \
+soroban config identity address buyer

@@ -38,7 +38,7 @@ fn test() {
 
 //comm en auth:
 let user_1 = Address::random(&env);
-std::println!("{:#?}", user_1);
+std::println!("user_1 from let user_1 = Address::random(&env);{:#?}", user_1);
 //comm esto no funciona std::println!("{}", user_1);
 //comm el compiler sugiere el pretty print y eto esta explicado en 
 //comm https://stackoverflow.com/questions/72637174/pretty-print-struct-in-rust
