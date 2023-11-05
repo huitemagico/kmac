@@ -13,3 +13,4 @@ soroban contract invoke \
     echo2\
     --message "On the last day of the world, I would want to plant a tree." \
     --trx "ab"
+################################
