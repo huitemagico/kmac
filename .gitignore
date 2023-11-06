@@ -1,4 +1,5 @@
-target
+target*
+contracts/kmac*/target
 .soroban
 bkdesa*
 bksync*
