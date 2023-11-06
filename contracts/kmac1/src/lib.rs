@@ -1,12 +1,12 @@
 #![no_std]
 // rev. 28102023 20:41
-// rev 31102023 11:57 tratando de meter auth aqui
+// rev 31102023 11:57 ... auth aqui
 // 01112023 19:33 
 // (a)receive 2 parameters more, same as auth example 
 // see runk1.sh for more details
 // (b)Nothing more about auth. 
 // Pending issue, dealing with adm and normal user
-
+// rev 06112023 new structure at github repo. kmac1==deliverable 1 version
 
 // 01112023 receive 2 parameters more, same as auth example :-|
 mod mimodulo;
@@ -202,7 +202,7 @@ let mut kreatorstoredaddress: Address = env
         let somevalue5:i32=matrixnum[1][1];
         let somevalue6:i32=matrixnum[1][2];
 //        o conformarse con trx de buyer.
-        let msg = "kmac alfa 1.8 03/11/2023 1655";
+        let msg = "kmac1=deliverable1=beta 1.1 Nov062023-1720";
         //
         let sout = String::from_slice(&env, msg);
 //

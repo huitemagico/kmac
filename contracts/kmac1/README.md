@@ -17,3 +17,7 @@ README.md Version November 02, 2023 21:09<br />
 Actualizado en (20231102212126) <br>
 <br> Last push to the repository was at (20231102212407)
 <br> Last push to the repository was at (20231105102150)
+<br> Last push to the repository was at (20231106171344)
+<br> Last push to the repository was at (20231106171622)
+<br> Last push to the repository was at (20231106171746)
+<br> Last push to the repository was at (20231106172133)

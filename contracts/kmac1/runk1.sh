@@ -4,7 +4,7 @@ soroban contract invoke \
     --id 1 \
     -- \
     echo2\
-     --user GC6NIFTZVU3NFMAXAT5C4ZHSOAVIFZDL7YMWSPOVZUO54SFR5IMMBEHJ     \
+     --user GDI6Q5C2ROTGSHULML5JFNAY6YQCLLSC3673T3M7GKLGSYDZSNDZQHXY     \
     --value 2 \
     --message "savekreatoraddress" \
     --sender  "kreator"
