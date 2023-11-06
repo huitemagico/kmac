@@ -1,5 +1,9 @@
 # kmac
-README.md Version November 02, 2023 21:23<br />
+# About this doc 
+README.md Version November 06, 2023 17:33<br />
+This is README.md file of the kmac project, at the main branch at https://github.com/huitemagico/kmac
+Its an bird view of the project, so if want to see documentation in detail please follow the links
+at "links" paragraph.
 
 # Introduction
  
@@ -30,8 +34,12 @@ soroban config identity generate acc2 && \ <br />
 soroban config identity address acc1 && \ <br />
 soroban config identity address acc2 <br />
 
- 4) You must copy the string obtained and then insert in the run0.sh script <br />
- (see The shells paragraph) <br />
+ 4) You must copy the string obtained and then insert in the runk1.sh script <br />
+
+ Note about the shells: each kmac version (kmac1, kmac2, etc) could have updated shells for the respective kmac version.
+ These are explained at the corresponding chapter at the
+ KMAC wiki. Please refer to chapter title "Shells", at the kmac version.
+ For example, for the kmac1 version (first deliverable)please see the chapter https://github.com/huitemagico/kmac/wiki#deliverable-1-about-the-shells<br />
 
 soroban contract invoke \ <br />
     --source acc1 \ <br />
@@ -44,7 +52,7 @@ soroban contract invoke \ <br />
     --message "reset" \ <br />
     --trx "ab" <br />
 
- 5) run the run0.sh
+ 5) run the run0.sh (or the runk1.sh etc. see the explanation above)
 
 ## About the shells
  The following shells are basic development and test utility shell scripts.<br />
@@ -52,9 +60,14 @@ soroban contract invoke \ <br />
  bld.sh   for build<br />
  run0.sh  for run<br />
  (you must edit run0.sh with the identities obtained in the precedent paragraph)
-
+ (see the above paragraph "Note about the shells")
  
 # Deliverables
+Note about the deliverables: The following paragraphs (deliverable 1, deliverable 2, etc.) represent the 'deliverables' documented in the offer document. In other words, these are the 'conditions of satisfaction' for the customer, in this case, the CSF team.
+
+To view the updated documentation that explains 'how' each deliverable meets the 'conditions of satisfaction' (as well as any issues, problems, pending tasks, or new features) for each KMAC version (KMAC1, KMAC2, etc.), please refer to the corresponding chapter in the KMAC wiki
+For instance, for "Deliverable 1" please see the chapter at link: https://github.com/huitemagico/kmac/wiki#deliverable-1-proof-of-concept-poc-for-design-pattern-implementation
+
 
 ## Deliverable 1: Proof of Concept (POC) for Design Pattern Implementation
 
@@ -89,4 +102,3 @@ Estimated Date of Completion: December 8 2023 (+1 week)<br />
 
 # Links related with KMAC
   https://soroban.stellar.org/docs/basic-tutorials/auth
-
