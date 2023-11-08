@@ -1,9 +1,10 @@
 # kmac
 # About this doc 
-README.md Version November 06, 2023 17:33<br />
+README.md Version November 08, 2023 12:14<br />
 This is README.md file of the kmac project, at the main branch at https://github.com/huitemagico/kmac
-Its an bird view of the project, so if want to see documentation in detail please follow the links
-at "links" paragraph.
+IMPORTANT: This is an overview of the project!
+You have to see the updated and detailed documentation in detail at 
+https://github.com/huitemagico/kmac/wiki
 
 # Introduction
  
@@ -11,7 +12,7 @@ at "links" paragraph.
 `@kmac` is a contract build with SOROBAN-SDK that makes an  implementation of an Finite State Machine template,  using knowed design pattern and providing extensible functions capabilities. <br />
 [GitHub url](https://github.com/huitemagico/kmac)
 
-![Kmac architecture](pictures/kmacarch023.png)
+![Kmac architecture](pictures/kmac03.vpd.png)
 
 
 # Usage:
@@ -100,5 +101,3 @@ Brief Description: This document serves as a comprehensive manual that provides 
 How to Measure Completion: This deliverable will be posted in the GitHub repository of the KMAC project and announced in the Stellar discussion <br />chat.
 Estimated Date of Completion: December 8 2023 (+1 week)<br />
 
-# Links related with KMAC
-  https://soroban.stellar.org/docs/basic-tutorials/auth
