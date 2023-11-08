@@ -1,0 +1,1 @@
+soroban contract invoke --id CAGR7KRCEPCO3PX67URJWOXT43YCFZ4MXSY3FW5OVMQKXS6PJW5P7FRR  -- echo2 --message reset
