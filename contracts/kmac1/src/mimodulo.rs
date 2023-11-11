@@ -20,10 +20,13 @@
 pub fn plus_two(x: u32) -> u32 {
     x + 2
 }
+//comm nov 09 cambio a 6x6 
+// pub fn put_coordinates() -> [(usize, usize); 6] {
+//     let mut coordinates: [(usize, usize); 6] = [(0, 0); 6];
 
-    pub fn put_coordinates() -> [(usize, usize); 6] {
-        let mut coordinates: [(usize, usize); 6] = [(0, 0); 6];
-        //ojo es de 2x3 la mat por lo tato son 6 valores
+    pub fn put_coordinates() -> [(usize, usize); 36] {
+        let mut coordinates: [(usize, usize); 36] = [(0, 0); 36];
+        //ojo es de 6x6 la mat por lo tato son 36 valores
         let mut idx = 0;
         
         //let mut fila1: usize = 0;
@@ -47,26 +50,94 @@ pub fn plus_two(x: u32) -> u32 {
         //let  col2:usize= 0;
         //
         
-        coordinates[idx] = (0,0);
-        idx = idx+1;
-        coordinates[idx] = (1,1);
-        idx = idx+1;
-        coordinates[idx] = (1,2);
-        /*
-        idx = idx+1;
-        coordinates[idx] = (1,0);
-        idx = idx+1;
-        coordinates[idx] = (1,1);
-        idx = idx+1;
-        coordinates[idx] = (1,2);
-         */
+        coordinates[idx] = (0,2);idx = idx+1;
         
-
-
-    
+        coordinates[idx] = (0,3);idx = idx+1;
+        coordinates[idx] = (0,4);idx = idx+1;
+        coordinates[idx] = (0,5);idx = idx+1;
+        coordinates[idx] = (1,3); idx = idx+1;
+        coordinates[idx] = (1,4); idx = idx+1;
+        coordinates[idx] = (1,5); idx = idx+1;
+        coordinates[idx] = (2,0); idx = idx+1;
+        coordinates[idx] = (2,1); idx = idx+1;
+        coordinates[idx] = (2,4); idx = idx+1;
+        coordinates[idx] = (2,5); idx = idx+1;
+        coordinates[idx] = (3,1); idx = idx+1;
+        coordinates[idx] = (3,3); idx = idx+1;
+        coordinates[idx] = (3,4); idx = idx+1;
+        coordinates[idx] = (3,5); idx = idx+1;
+        coordinates[idx] = (4,0); idx = idx+1;
+        coordinates[idx] = (4,1); idx = idx+1;
+        coordinates[idx] = (4,2); idx = idx+1;
+        coordinates[idx] = (4,3); idx = idx+1;
+        coordinates[idx] = (4,4); idx = idx+1;
+        coordinates[idx] = (4,5); idx = idx+1;
+        coordinates[idx] = (5,0); idx = idx+1;
+        coordinates[idx] = (5,1); idx = idx+1;
+        coordinates[idx] = (5,2); idx = idx+1;
+        coordinates[idx] = (5,3); idx = idx+1;
+        coordinates[idx] = (5,4); idx = idx+1;
+        coordinates[idx] = (5,5); 
         coordinates
+        
     }
 
+
+//matrix of the core functions
+//must not be modified!
+//the numbers are ARBITRARY.
+    pub fn put_corefunc() -> [[i32; 6]; 6] {
+        //let mut coordinates: [(usize, usize); 36] = [(0, 0); 36];
+        //let mut idx = 0;
+        //cell <> 0 must be indicated where the FUNCTION REALLY EXISTS!
+        let mut matrixnum: [[i32; 6]; 6] = [[0; 6]; 6];
+        let  number = 0;//means not function
+        for row in 0..5 { //6 cols 6 filas
+        for col in 0..5 {
+            matrixnum[row][col]=number;
+        }
+    }
+    matrixnum[0][0]=11;
+    matrixnum[0][1]=12;
+    matrixnum[1][2]=9;
+    matrixnum[2][3]=16;
+    matrixnum[3][2]=21;
+    matrixnum[3][0]=19;
+
+    // 
+    
+    //coordinates[idx] = (0,2);idx = idx+1;
+    //     coordinates[idx] = (0,2);idx = idx+1;
+        
+    //     coordinates[idx] = (0,3);idx = idx+1;
+    //     coordinates[idx] = (0,4);idx = idx+1;
+    //     coordinates[idx] = (0,5);idx = idx+1;
+    //     coordinates[idx] = (1,3); idx = idx+1;
+    //     coordinates[idx] = (1,4); idx = idx+1;
+    //     coordinates[idx] = (1,5); idx = idx+1;
+    //     coordinates[idx] = (2,0); idx = idx+1;
+    //     coordinates[idx] = (2,1); idx = idx+1;
+    //     coordinates[idx] = (2,4); idx = idx+1;
+    //     coordinates[idx] = (2,5); idx = idx+1;
+    //     coordinates[idx] = (3,1); idx = idx+1;
+    //     coordinates[idx] = (3,3); idx = idx+1;
+    //     coordinates[idx] = (3,4); idx = idx+1;
+    //     coordinates[idx] = (3,5); idx = idx+1;
+    //     coordinates[idx] = (4,0); idx = idx+1;
+    //     coordinates[idx] = (4,1); idx = idx+1;
+    //     coordinates[idx] = (4,2); idx = idx+1;
+    //     coordinates[idx] = (4,3); idx = idx+1;
+    //     coordinates[idx] = (4,4); idx = idx+1;
+    //     coordinates[idx] = (4,5); idx = idx+1;
+    //     coordinates[idx] = (5,0); idx = idx+1;
+    //     coordinates[idx] = (5,1); idx = idx+1;
+    //     coordinates[idx] = (5,2); idx = idx+1;
+    //     coordinates[idx] = (5,3); idx = idx+1;
+    //     coordinates[idx] = (5,4); idx = idx+1;
+    //     coordinates[idx] = (5,5); 
+    //     coordinates
+    matrixnum
+    }
 
 // fn get_mat (mat: [[String; 3]; 2]) -> String {
         //     use soroban_sdk::{Env, String};
