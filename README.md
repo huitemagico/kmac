@@ -1,10 +1,21 @@
 # kmac
 # About this doc 
-README.md Version November 08, 2023 12:14<br />
+README.md Version November 11, 2023 13:20<br />
 This is README.md file of the kmac project, at the main branch at https://github.com/huitemagico/kmac
-IMPORTANT: This is an overview of the project!
-You have to see the updated and detailed documentation in detail at 
-https://github.com/huitemagico/kmac/wiki
+
+ *IMPORTANT: This is an overview of the project!*
+Please see the updated and detailed documentation in detail at following links:
+
+
+| Content| Link |
+| --- | --- |
+| KMAC wiki main page| [wiki main page](https://github.com/huitemagico/kmac/wiki) |
+| Deliverables main chapter| [Deliverables main chapter ](https://github.com/huitemagico/kmac/wiki#deliverables) |
+| Deliverable 1 | [Page1](https://github.com/huitemagico/kmac/wiki/KMAC-Deliverable-1) |
+| Setup | [KMAC Setup](https://github.com/huitemagico/kmac/wiki/KMAC-Setup) |
+| User Manual | [KMAC User Manual](https://github.com/huitemagico/kmac/wiki/KMAC-User-Manual) |
+
+
 
 # Introduction
  
@@ -14,57 +25,11 @@ https://github.com/huitemagico/kmac/wiki
 
 ![Kmac architecture](pictures/kmac03.vpd.png)
 
-
-# Usage:
-## Environment setup 
-  If you want to access a comprehensive documentation for installing all the necessary tools to run the program, 
-  please refer to the KMAC wiki, chapter "For installing the environment from Zero",  <br />
-  at the following link: <br />
-  [KMAC wiki] (https://github.com/huitemagico/kmac/wiki)
-
- ## Fast setup  
-   The basic steps for setup and run kmac are the following: <br />
-
- 1) cargo test <br />
- 2) soroban contract build<br /> 
- 3) identities setup:<br />
-We need to set up some identities to use for testing and get their public keys: <br />
-
-soroban config identity generate acc1 && \ <br />
-soroban config identity generate acc2 && \ <br />
-soroban config identity address acc1 && \ <br />
-soroban config identity address acc2 <br />
-
- 4) You must copy the string obtained and then insert in the runk1.sh script <br />
-
- Note about the shells: each kmac version (kmac1, kmac2, etc) could have updated shells for the respective kmac version.
- These are explained at the corresponding chapter at the
- KMAC wiki. Please refer to chapter title "Shells", at the kmac version.
- For example, for the kmac1 version (first deliverable)please see the chapter https://github.com/huitemagico/kmac/wiki#deliverable-1-about-the-shells<br />
-
-soroban contract invoke \ <br />
-    --source acc1 \ <br />
-    --wasm target/wasm32-unknown-unknown/release-with-logs/echo2.wasm \ <br />
-    --id 1 \ <br />
-    -- \ <br />
-    echo2\ <br />
-     --user GCK3W6M5Z3W3JIHJ7M4MTKG4TH2TRMZRBFFKN3TTF6VFTFQYAN5RXPIM     \ <br />
-    --value 2 \ <br />
-    --message "reset" \ <br />
-    --trx "ab" <br />
-
- 5) run the run0.sh (or the runk1.sh etc. see the explanation above)
-
-## About the shells
- The following shells are basic development and test utility shell scripts.<br />
- compi.sh for compiling<br />
- bld.sh   for build<br />
- run0.sh  for run<br />
- (you must edit run0.sh with the identities obtained in the precedent paragraph)
- (see the above paragraph "Note about the shells")
  
 # Deliverables
-Note about the deliverables: The following paragraphs (deliverable 1, deliverable 2, etc.) represent the 'deliverables' documented in the offer document. In other words, these are the 'conditions of satisfaction' for the customer, in this case, the CSF team.
+Note about the deliverables: The following paragraphs (deliverable 1, deliverable 2, etc.) represent the 'deliverables' documented in the offer document. 
+
+These are the 'conditions of satisfaction' for the customer, in this case, the SCF team.
 
 To view the updated documentation that explains 'how' each deliverable meets the 'conditions of satisfaction' (as well as any issues, problems, pending tasks, or new features) for each KMAC version (KMAC1, KMAC2, etc.), please refer to the corresponding chapter in the KMAC wiki
 For instance, for "Deliverable 1" please see the chapter at link: https://github.com/huitemagico/kmac/wiki#deliverable-1-proof-of-concept-poc-for-design-pattern-implementation
