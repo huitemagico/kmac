@@ -15,7 +15,40 @@ Please see the updated and detailed documentation in detail at following links:
 | Setup | [KMAC Setup](https://github.com/huitemagico/kmac/wiki/KMAC-Setup) |
 | User Manual | [KMAC User Manual](https://github.com/huitemagico/kmac/wiki/KMAC-User-Manual) |
 
+# Fast Deployment
+1. In one terminal open a Stellar Node and run the soroban-preview docker container
+```bash
+bash src/quickstart.sh standalone #here you can also choose futurenet or testnet
+```
 
+2.- In another terminal open the soroban-preview docker container
+```bash
+bash src/run.sh
+```
+3.- Open kmac1 contract folder and run
+```bash
+cd contracts/kmac1
+cargo test -- --nocapture #add explanation
+soroban contract build --profile release-with-logs #add explanation
+soroban config identity generate kreator
+soroban config identity generate buyer
+KREATOR=$(soroban config identity address kreator)
+BUYER=$(soroban config identity address buyer)
+```
+
+```bash
+soroban contract invoke \
+    --source kreator \
+    --wasm target/wasm32-unknown-unknown/release-with-logs/kmac1b.wasm \
+    --id 1 \
+    -- \
+    kmac\
+     --user $KREATOR    \
+    --value 2 \
+    --message "savekad" \
+    --buyer $BUYER \
+    --sender  "kreator"
+```
 
 # Introduction
  
