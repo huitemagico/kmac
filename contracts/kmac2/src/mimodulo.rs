@@ -49,12 +49,15 @@ pub fn plus_two(x: u32) -> u32 {
         //let  row1:usize= 0;
         //let  col2:usize= 0;
         //
-        
+        coordinates[idx] = (0,0);idx = idx+1;
         coordinates[idx] = (0,2);idx = idx+1;
         
         coordinates[idx] = (0,3);idx = idx+1;
         coordinates[idx] = (0,4);idx = idx+1;
         coordinates[idx] = (0,5);idx = idx+1;
+        //
+        coordinates[idx] = (1,0); idx = idx+1;
+        coordinates[idx] = (1,1); idx = idx+1;
         coordinates[idx] = (1,3); idx = idx+1;
         coordinates[idx] = (1,4); idx = idx+1;
         coordinates[idx] = (1,5); idx = idx+1;
@@ -85,10 +88,8 @@ pub fn plus_two(x: u32) -> u32 {
 
 //matrix of the core functions
 //must not be modified!
-//the numbers are ARBITRARY.
+//the numbers are NOT ARBITRARY.It must follow 1,2 3, etc. These are the "functions numbering"
     pub fn put_corefunc() -> [[i32; 6]; 6] {
-        //let mut coordinates: [(usize, usize); 36] = [(0, 0); 36];
-        //let mut idx = 0;
         //cell <> 0 must be indicated where the FUNCTION REALLY EXISTS!
         let mut matrixnum: [[i32; 6]; 6] = [[0; 6]; 6];
         let  number = 0;//means not function
@@ -97,45 +98,15 @@ pub fn plus_two(x: u32) -> u32 {
             matrixnum[row][col]=number;
         }
     }
-    matrixnum[0][0]=11;
-    matrixnum[0][1]=12;
-    matrixnum[1][2]=9;
-    matrixnum[2][3]=16;
-    matrixnum[3][2]=21;
-    matrixnum[3][0]=19;
-
-    // 
+    matrixnum[0][0]=1;
+    matrixnum[0][1]=2;
+    matrixnum[1][2]=3;
+    matrixnum[2][3]=4;
+    matrixnum[3][0]=5;
+    matrixnum[3][2]=6;
     
-    //coordinates[idx] = (0,2);idx = idx+1;
-    //     coordinates[idx] = (0,2);idx = idx+1;
-        
-    //     coordinates[idx] = (0,3);idx = idx+1;
-    //     coordinates[idx] = (0,4);idx = idx+1;
-    //     coordinates[idx] = (0,5);idx = idx+1;
-    //     coordinates[idx] = (1,3); idx = idx+1;
-    //     coordinates[idx] = (1,4); idx = idx+1;
-    //     coordinates[idx] = (1,5); idx = idx+1;
-    //     coordinates[idx] = (2,0); idx = idx+1;
-    //     coordinates[idx] = (2,1); idx = idx+1;
-    //     coordinates[idx] = (2,4); idx = idx+1;
-    //     coordinates[idx] = (2,5); idx = idx+1;
-    //     coordinates[idx] = (3,1); idx = idx+1;
-    //     coordinates[idx] = (3,3); idx = idx+1;
-    //     coordinates[idx] = (3,4); idx = idx+1;
-    //     coordinates[idx] = (3,5); idx = idx+1;
-    //     coordinates[idx] = (4,0); idx = idx+1;
-    //     coordinates[idx] = (4,1); idx = idx+1;
-    //     coordinates[idx] = (4,2); idx = idx+1;
-    //     coordinates[idx] = (4,3); idx = idx+1;
-    //     coordinates[idx] = (4,4); idx = idx+1;
-    //     coordinates[idx] = (4,5); idx = idx+1;
-    //     coordinates[idx] = (5,0); idx = idx+1;
-    //     coordinates[idx] = (5,1); idx = idx+1;
-    //     coordinates[idx] = (5,2); idx = idx+1;
-    //     coordinates[idx] = (5,3); idx = idx+1;
-    //     coordinates[idx] = (5,4); idx = idx+1;
-    //     coordinates[idx] = (5,5); 
-    //     coordinates
+
+    
     matrixnum
     }
 

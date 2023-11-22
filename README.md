@@ -1,6 +1,6 @@
 # kmac
 # About this doc 
-README.md Version November 13, 2023 12:40<br />
+README.md Version November 22, 2023 12:40<br />
 This is README.md file of the kmac project, at the main branch at https://github.com/huitemagico/kmac
 
  *IMPORTANT: This is an overview of the project!*
@@ -33,8 +33,8 @@ The setup use soroban version:
 $ soroban -V
 soroban 20.0.0-rc2 (1c49aed3badc374d46b340b5212a745703c524b2)
 ```
- **(I am working for pack the Deliverable-1 version in a DOCKER platform :-/ )**
-
+ 
+Important: These instructions are for using the 'kmac2' version on the Testnet updated as of November 22, 2023. Keep in mind that the instructions are for an unstable version and need to be updated accordingly :https://soroban.stellar.org/docs/getting-started/deploy-to-testnet
 
 ## (1) Environment setup 
 
@@ -42,14 +42,17 @@ soroban 20.0.0-rc2 (1c49aed3badc374d46b340b5212a745703c524b2)
  The RUSTC version should be rustc 1.72 or newer.
 
 ## (2) git clone from github 
-Last version of "Stage-1" (Deliverable-1") at https://github.com/huitemagico/kmac/tree/main/contracts/kmac1
+Version of "Stage-1" (Deliverable-1") at https://github.com/huitemagico/kmac/tree/main/contracts/kmac1
+Version (unstable, in progress) of "Stage-2" at https://github.com/huitemagico/kmac/tree/main/contracts/kmac2
 
 ## cargo, build and run.
+
+
 Once the program is downloaded on the local disk, see the steps below:
 
 (1)
  ```bash
-cd kmac1
+cd kmac2
 
 cargo test -- --nocapture
  ```
@@ -75,33 +78,11 @@ soroban config identity address buyer
 
 (4) The output of the precedent instruction, gives the 'kreator address'.
  
-Now copy the kreator address in the following instruction at the "user" parameter below:
 
-```bash
-soroban contract invoke \
-    --source kreator \
-    --wasm target/wasm32-unknown-unknown/release-with-logs/kmac1b.wasm \
-    --id 1 \
-    -- \
-    kmac\
-     --user GBSWHN23BZS5PGFMTYOZJ5QE77X7E7B4OMENPXKFD3BY6CUOTAW5BMA3     \
-    --value 2 \
-    --message "savekad" \
-    --buyer "GBGC5LMJOTEYRHND7AY3GMDNTQPHJ22WMUMWKVBD7D746MLAN3OGVXRP" \
-    --sender  "kreator"
-```
-(5) run the invoke instruction above
+(5) To view the stored values:
+Use readcont.sh 
 
-(6) for see the values stored:
-```bash
-soroban contract read --id 1 --key KSTADR
-soroban contract read --id 1 --key COUNTER
-soroban contract read --id 1 --key B1STAD
-soroban contract read --id 1 --key MCSTAT
-
-```
-
-(7) Understanding the process
+(6) Understanding the process
 At this step, the contract is prepared for receive the transactions included at the "Stage-1" (Deliverables-1).
 
 For details of the transactions, [please see the chapter "Deliverable-1"](https://github.com/huitemagico/kmac/wiki/KMAC-Deliverable-1)

@@ -34,9 +34,10 @@ std::println!("user_1 from let user_1 = Address::random(&env);{:#?}", user_1);
     //
     //
     // calling contract
-    
+    //fn set_keyb   (env:&Env , user:Address)
     let echo_response_tupla = 
               client.kmac        (&user_1,  &user_1,       &5,         &first_message,  &first_trx);
+             
     
     let expected_echo_response = 5;
 

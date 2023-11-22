@@ -1,11 +1,7 @@
 #![no_std]
-// kmac1b rev november 08 2023 18:08
-// kmac1b version:
-// 1. basic role management for BUYERS users.
+// kmac2 rev november 22 2023 12:08
 // see https://github.com/huitemagico/kmac/wiki#allow-list-implementation
 mod mimodulo;
-//use std::env;
-
 use soroban_sdk::{contract, contractimpl,contracttype, Address, symbol_short, vec, Env, String, Symbol, Vec,log,BytesN};
 #[contracttype]
 pub enum DataKey {
@@ -17,17 +13,6 @@ pub enum DataKey2 {
     UsrNme,
 }
 
-// impl StringArray {
-//     // Method to add a string to the array
-//     fn add_string(&mut self, string: String) {
-//         self.strings.push(string);
-//     }
-
-//     // Method to retrieve the entire array
-//     fn get_array(&self) -> &Vec<String> {
-//         &self.strings
-//     }
-// }
 use mimodulo::plus_two;
 pub trait Suma2{
     fn plus_two(&self, env: Env,x: u32) -> u32;
@@ -49,102 +34,115 @@ mod test;
 
 #[contract]
 pub struct KmacContract;
-// (3) #contract  pub struct ---------
-// #[contract]
-// pub struct IncrementContract;
 
 #[contractimpl]
 impl KmacContract {
+
        pub fn kmac    (env: Env,  user: Address, buyer: Address, value: u32, message: String, sender:String ) -> 
-       (  u32,u32, u32, u32, Vec<String>, bool,i32,i32,i32,i32,i32,i32) {
+       //(  u32,u32, u32, u32, Vec<String>, bool,i32,i32,i32,i32,i32,i32) {
+        (  u32,u32, u32, u32, Vec<String>, Vec<i32>) {
  // 
+//let my_vector: Vec<i32> = vec![0; 12];
+//let coordinates: [(usize, usize); 36] // s
+//    let mut coordinates: [(usize, usize); 36] = [(0, 0); 36];
+let mut  veci32:           [i32; 20]= [0;20]; // s
+let mut iveci32:usize = 0;
+// let  anystring0= String::from_slice(&env, "0");
+// let  anystring1= String::from_slice(&env, "0");
+// let  anystring2= String::from_slice(&env, "0");
+// let  anystring3= String::from_slice(&env, "0");
+// let  anystring4= String::from_slice(&env, "0");
+// let  anystring5= String::from_slice(&env, "0");
+// let  anystring6= String::from_slice(&env, "0");
+// let  anystring7= String::from_slice(&env, "0");
+// let  anystring8= String::from_slice(&env, "0");
+// let  anystring9= String::from_slice(&env, "0");
+// let mut array: [String; 3] = [anystring0,anystring1,anystring2];
+//let  mut  arrstr: [[String; 10]] = [[anystring0,anystring1,anystring2 ,anystring3, anystring4,anystring5,anystring6,anystring7,anystring8,anystring9]];
+let scldrst =String::from_slice(&env, "cldrst");
+let rstkadm = "rstkadm";
+let srstkadm = String::from_slice(&env, rstkadm);
+let svb1adrms = String::from_slice(&env, "svb1adr");
+let savekadmessage = String::from_slice(&env, "savekad");
+let resetmessage = String::from_slice(&env, "reset"); 
+let clonemsg=  message.clone();
+//
+let mut nummsg=0;
+if clonemsg == scldrst      {nummsg=1;} 
+if clonemsg==srstkadm       {nummsg=2;} 
+if clonemsg==svb1adrms      {nummsg=9;}
+//if clonemsg==savekadmessage {nummsg=99;}
+//
+//|--------|--------|--------|--------|--------|--------|--------|
+//|--------|--------|--------|--------|--------|--------|--------|--------|
+//|        | A      | B      |  C     | D      | E      |        |        |
+//|--------|--------|--------|--------|--------|--------|--------|--------|
+//|        | 0      | 1      | 2      | 3      | 4      |  5     |        |
+//|--------|--------|--------|--------|--------|--------|--------|--------|
+//|--------|--------|--------|--------|--------|--------|--------|--------|
+//|    A   | 1 (1)  | 2 (2)  |        |        |        |        |   0    |
+//|--------|--------|--------|--------|--------|--------|--------|--------|
+//|    B   |        |        | 9(3)   |        |        |        |   1    |
+//|--------|--------|--------|--------|--------|--------|--------|--------|
+//|    C   |        |        | 15     |  16(4) |        |        |   2    |
+//|--------|--------|--------|--------|--------|--------|--------|--------|
+//|    D   | 19(5)  |        | 21 (6) |        |        |        |   3    |
+//|--------|--------|--------|--------|--------|--------|--------|--------|
+//|    E   |        |        |        |        |        |        |   4    |
+//|--------|--------|--------|--------|--------|--------|--------|--------|
+//|        |        |        |        |        |        |        |   5    |
+//|--------|--------|--------|--------|--------|--------|--------|--------|
+//|        |        |        |        |        |        |        |        |
+//|--------|--------|--------|--------|--------|--------|--------|--------|
+//|        |        |        |        |        |        |        |        |
+//|--------|--------|--------|--------|--------|--------|--------|--------|
 
-//
-    let current_contract_add = env.current_contract_address();
-    log!(&env, "current_contract_add: {}", current_contract_add);
-//
-// //let key = DataKey::Counter(user.clone()); //from auth lib
-// //let add_from_par = user;
 
-// let cloneuser0=  user.clone();
-// log!(&env, "cloneuser0: {}", cloneuser0);
-// let cloneuser=  user.clone();
-// log!(&env, "cloneuser: {}", cloneuser);
-// //
-// let cloneuser2= cloneuser.clone();
-// log!(&env, "cloneuser2: {}", cloneuser2);
-
-//
-//
-// if trx == resetmessage {
-//     old_message = String::from_slice(&env, "ResetMessageStored");
-// }
-
-
-    let stringtrx = String::from_slice(&env, "13");  
-//
- //      
-    log!(&env, "logg standard default init values for the matrix");
-    let string11 = String::from_slice(&env, "11");
-    let string21 = String::from_slice(&env, "21");
-    let string12 = String::from_slice(&env, "12");
-    let string22 = String::from_slice(&env, "22");
-    let string13 = String::from_slice(&env, "13");
-    let string23 = String::from_slice(&env, "23");
-    let string00 = String::from_slice(&env, "00");
-//
-//
-
-//let  mut  msjtos: [[String; 10]] ;
-  let  mut  matrix: [[String; 3]; 2] = [[
-     string11,string12,string13],[string21,string22,string23 ]];
-//
 log!(&env, "logg standard default init values for the matrix number");
 //let mut matrixnum: [[i32; 3]; 2] = [[0; 3]; 2];
 let mut matrixnum: [[i32; 6]; 6] = [[0; 6]; 6];
     let mut number = 1;
     // let num_rows = matrixnum.len();
     // let num_cols = matrixnum[0].len();
-    for row in 0..5 { //6 cols 6 filas
-        for col in 0..5 {
+    for row in 0..6 { //6 cols 6 filas
+        for col in 0..6 {
             matrixnum[row][col]=number;
             number += 1;
         }
     }
+    let str = "123";
+   
 let coordinates = mimodulo::put_coordinates();
 log!(&env, "logging when the coordinates put the values in matrixnum ");
-//
 let mut value: i32;
-for row in 0..2{
-    for col in 0..3 {
-        for col1 in 0..6 {
-            value = row as i32;
-            log!(&env, "logg row value ", value , symbol_short!("another"));
-            value = col as i32;
-            log!(&env, "logg col value ", value , symbol_short!("another"));
-            value = col1 as i32;
+for row in 0..5{
+    for col in 0..5 {
+        for col1 in 0..35 {
+            // value = row as i32;
+            // log!(&env, "logg row value ", value , symbol_short!("another"));
+            // value = col as i32;
+            // log!(&env, "logg col value ", value , symbol_short!("another"));
+            // value = col1 as i32;
             let (coordx,coordy)= coordinates[col1];
             if coordx==row && coordy==col {
-                log!(&env, "logg ");
-                log!(&env, "logg {}",value);
+                // log!(&env, "logg ");
+                // log!(&env, "logg {}",value);
                 matrixnum[row][col]=9999;
 
             }
         }
+        if matrixnum[row][col]!=9999{
+            if  iveci32<19 {veci32[iveci32] = row as i32;iveci32=iveci32+1;}
+            if  iveci32<19 {veci32[iveci32] = col as i32;iveci32=iveci32+1;}
+            if  iveci32<19 {veci32[iveci32] = matrixnum [row][col];iveci32=iveci32+1;}
+
+        }
+        
 
     }
 }
-let fila2: usize = 0;
-let colu2: usize = 0;
-matrix[fila2][colu2] = string00;
-//
-//
-// the function "find2" has to find the parameter "transaction" () in   the matrix
-let (fila, colu)= find2(&matrix, stringtrx) ;
-//
+if  iveci32<19 {veci32[iveci32] = 88888;iveci32=iveci32+1;}
 log!(&env, "CORE init functions definition for the matrix function");
-//let mut corefuncmat: [[i32; 6]; 6] = [[0; 6]; 6];
-//let mut corefuncmat: [[i32; 6]; 6] = [[0; 6]; 6];
 let corefuncmat: [[i32; 6]; 6] ;
 corefuncmat = mimodulo::put_corefunc();
 // some logging:
@@ -156,16 +154,19 @@ for row in 0..5 { //6 cols 6 filas
             filita=row as i32;
             cmnita=col as i32;
             log!(&env, "corefuncmat value row {} col {} value {}",filita,cmnita,corefuncmat [row][col] );
+            if  iveci32<19 {veci32[iveci32] = corefuncmat [row][col];iveci32=iveci32+1;}
 
         }
         
         
     }
 }
-
+if  iveci32<19 {veci32[iveci32] = 77777;}
 //
-        //let mut stringbool1= String::from_slice(&env, "trueley22");
-        //let mut stringbool1;
+let current_contract_add = env.current_contract_address();
+log!(&env, "current_contract_add: {}", current_contract_add);
+//
+
 
          let mystorage = env.storage();
          let key = symbol_short!("key99");
@@ -175,30 +176,11 @@ for row in 0..5 { //6 cols 6 filas
          let booleantype :bool;
          booleantype=mystorage.persistent().has(&key);
          log!(&env, "booleantype when there is the key: %s", booleantype);
-        //  //let mut key = symbol_short!("KSTADR");
-        //  booleantype=mystorage.persistent().has(&KSTADR);
-        //  log!(&env, "booleantype when for KSTADR existence:", booleantype);
-        //  //
-        //  let mut stringbool1= String::from_slice(&env, "trueleyy");
-    // if booleantype { //== true  {
-    //     let stringbool1  = String::from_slice(&env, "VERDADERITO");
-    // }
-//
-  
-   // booleantype = mystorage.persistent().has(&key);
-    // let mut stringbool1= String::from_slice(&env, "trueleyy");
-    // if booleantype { //== true  {
-    //     let stringbool1  = String::from_slice(&env, "VERDADERITO");
-    // }
+      
 //
 //
         let _old_message = "nomessage";
         
-// the kreator messages are hardcoded in the core of kmac
-// only the kreator can send the following messages:
-        let svb1adrms = String::from_slice(&env, "svb1adr");//save buyer 1 address
-        let savekadmessage = String::from_slice(&env, "savekad");
-        let resetmessage = String::from_slice(&env, "reset"); 
 //
 // (a)    save for work message received
         let ln1: u32;
@@ -243,21 +225,15 @@ for row in 0..5 { //6 cols 6 filas
 //
         count = plus_two (count);
 //
-        let fila1: u32;
-        let colu1: u32;
-        fila1=fila as u32;
-        colu1=colu as u32;
 //        o conformarse con trx de buyer.
 
-        let msg = "kmac2=deliverable2='beta' 1.0 Nov142023-19:59-"; //version message
-        let sout = String::from_slice(&env, msg);
+
         let rstkadm = "rstkadm";//reset key administrator
         let srstkadm = String::from_slice(&env, rstkadm);
         //let srstkadm1 = String::from_slice(&env, rstkadm);
         let scldrst =String::from_slice(&env, "cldrst");
         //let scldrst2 =String::from_slice(&env, "cldrst");
 //let brwsvkadmsg = &savekadmessage;
-let clonemsg=  message.clone();
 log!(&env, "clonemsg: {}", clonemsg);
 let mut stringbool1= String::from_slice(&env, "sbool1");
 let mut stringbool2= String::from_slice(&env, "trueley22");
@@ -291,31 +267,6 @@ let cloneuser7=  cloneuser6.clone();
 let cloneuser8=  cloneuser7.clone();
 
 
-// match clonemsg{
-//     KRST =>{
-//         log!(&env, "rstkadm");
-//         stringbool2=srstkadm1;
-
-//     }
-//     savekadmessage1 =>  {
-//         log!(&env, "savekadmessage");
-//         stringbool3=srstkadm1;
-//     }
-//     svb1adrms =>{
-//         log!(&env, "svb1adrms");
-//     }
-//     scldrst =>{
-//         log!(&env, "scldrst");
-//     }
-//     _ => {
-//         log!(&env, "no se ???");
-//     }
-// }
-let mut nummsg=0;
-if clonemsg==srstkadm       {nummsg=2;} //"rstkadm" 1411 aplico reset desde a -->B viene siendo == "set" ==2==(0,2)==a->b
-if clonemsg==savekadmessage {nummsg=99;}//"savekad" 1411 off set k address on the storage ==2==(0,2)==a->b
-if clonemsg==svb1adrms      {nummsg=9;}//set by address=>"activation of the machine"==9==(1,2)==(B-C)
-if clonemsg == scldrst      {nummsg=1;} //cold reset segun matrix                   ==1==(0,0)==(A->A)(D->A)
 let crow:usize ;
 let ccol:usize ;
 (crow,ccol)= findcoor(matrixnum,nummsg);
@@ -415,19 +366,66 @@ mensaje1=clonemsg;
 //matrnum[1][1]|                    |
 //matrnum[1][2]|;                   |
 //
-return (ln1, count, fila1, colu1,vec![&env,  sout, old_message, message, stringbool1, stringbool2,stringbool3,stringbool4,stringbool5,stringbool6,stringbool7,s,mensaje1],booleantype,
-    matrixnum[0][0],matrixnum[0][1],matrixnum[0][2],matrixnum[1][0],matrixnum[1][1],matrixnum[1][2]);
+ let str = "123";
+ let num: i32 = str.parse().unwrap();
+ log!(&env, "string to  number {}", num);
 
+let colu1: u32=9999;
+let fila1: u32=9999;
+//   if  iveci32<11 {veci32[iveci32] = 100;iveci32=iveci32+1;}
+//   if  iveci32<11 {veci32[iveci32] = 200;iveci32=iveci32+1;}
+//   if  iveci32<11 {veci32[iveci32] = 300;}
+  
+let msg = "kmac2=deliverable2='beta' 2.0 Nov162023-1928-"; //version message
+let sout = String::from_slice(&env, msg);
+//let mut sout = String::from_slice(&env, &array[0]);
+//sout=array[0];
+ return (ln1, count, fila1, colu1,vec![&env,  sout, old_message, message, stringbool1, stringbool2,stringbool3,stringbool4,stringbool5,stringbool6,stringbool7,s,mensaje1],
+     //veci32
+     vec![&env, veci32[0], veci32[1], veci32[2],veci32[3], veci32[4], veci32[5],veci32[6], veci32[7], veci32[8],veci32[9],
+     veci32[10], veci32[11], veci32[12],veci32[13], veci32[14], veci32[15],veci32[16], veci32[17], veci32[18],veci32[19]]
+//    booleantype,
+  //  matrixnum[0][0],matrixnum[0][1],matrixnum[0][2],matrixnum[1][0],matrixnum[1][1],matrixnum[1][2]
 
+);   
+    
 
 fn set_keyb   (env:&Env , user:Address)->String{
 //svb1adrms block BEGIN =="svb1adr"==9
+let statec: String;
+  statec = String::from_slice(&env, "C");
   let setkeybret = String::from_slice(&env, "set_keyb ok");
   log!(&env, "save the buyer ad (that i have no!");
   env.storage().persistent().set(&B1STAD, &user);
+  //env.storage().persistent().set(&MCSTAT, &stateb);
+  env.storage().persistent().set(&MCSTAT, &statec);
   return setkeybret;
+
+
+//   n reset_key (env:&Env ,kstradrex:String, strfalse2:String, user:Address)->(String, String){
+//     //set the KSTR key, return "KSTR already existed" or "KSTR no existed before"
+//     //local
+//     let stringbool3: String;//::from_slice(&env, "trueleyy");
+//     let stateb: String;
+//     stateb = String::from_slice(&env, "B");
+//     log!(&env, "reset key kreator");
+//     if is_initialized(&env) { // verifica si existia &KSTADR
+//         stringbool3=kstradrex;//(savekadmessage)KSTADR existed!-panic?");
+        
+//     }else 
+//      {
+//         stringbool3  =strfalse2;
+//     }
+//         env.storage().persistent().set(&KSTADR, &user);
+        
+//         env.storage().persistent().set(&MCSTAT, &stateb);
+     
+//      return (stringbool3,stateb);
+// }//reset_key
+
+
 }
-                        
+
 // set key buyer end
 fn reset_key (env:&Env ,kstradrex:String, strfalse2:String, user:Address)->(String, String){
     //set the KSTR key, return "KSTR already existed" or "KSTR no existed before"
@@ -462,6 +460,47 @@ fn coldreset (env:&Env,scldrst:String)->(String, String)
 }
                                   // }
 //
+fn cmpaddr (env:&Env,newaddr:Address) -> (String,bool){
+    //local variables
+    let booleantype :bool;
+    let mut mkstrnoex= String::from_slice(&env, "stored KSTADR didnt existed");
+    let mut mkstradeq= String::from_slice(&env, "new KSTADR == stored KSTADR (??)");
+    let mut mkstradneq= String::from_slice(&env, "new KSTADR <> stored KSTADR (??)");
+    let mut meqadr= String::from_slice(&env, "..");
+    let kstoredadd: Address;
+    if is_initialized(&env) { 
+         kstoredadd = env
+            .storage()
+            .persistent()
+            .get(&KSTADR)
+            .unwrap();
+        let clonestored=  kstoredadd.clone();
+        // comparo:
+        if clonestored==newaddr
+        {
+            //old and new are the same
+             booleantype=true;
+             log!(&env, "stored KSTADR== new");
+             meqadr=mkstradeq; 
+        } else 
+           {
+               log!(&env, "stored KSTADR <> new");
+               booleantype=false;
+               meqadr=mkstradneq;
+            }
+        
+    }else 
+        {
+            log!(&env, "stored KSTADR didnt existed.");
+            booleantype=false;
+            meqadr=mkstrnoex;
+        }
+
+     
+    return (meqadr, booleantype);
+}
+
+
 //-> stringbool1, stringbool2, stringbool4,
 fn savekadd (env: &Env, kstradre2:String, strtrue: String,strtrue3: String, 
     strfalse:String,strfalse3:String, user:Address, cloneuser:Address, moldnewsm:String,
@@ -575,4 +614,10 @@ fn findcoor(matrix: [[i32; 6]; 6], index: i32) -> (usize, usize){
 }
 
 
-}    }  
+}  
+
+}  
+
+
+
+
