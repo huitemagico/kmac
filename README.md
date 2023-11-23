@@ -1,19 +1,19 @@
 # kmac
 # About this doc 
-README.md Version November 11, 2023 13:20<br />
+README.md Version November 22, 2023 12:40<br />
 This is README.md file of the kmac project, at the main branch at https://github.com/huitemagico/kmac
 
  *IMPORTANT: This is an overview of the project!*
 Please see the updated and detailed documentation in detail at following links:
 
-
 | Content| Link |
 | --- | --- |
-| KMAC wiki main page| [wiki main page](https://github.com/huitemagico/kmac/wiki) |
+| Proposal of the idea (Dashboard SCF)| [KMAC at SCF](https://dashboard.communityfund.stellar.org/scfawards/scf-20/panelreview/suggestion/103) |
+| KMAC Documentation main page| [KMAC wiki main page](https://github.com/huitemagico/kmac/wiki) |
 | Deliverables main chapter| [Deliverables main chapter ](https://github.com/huitemagico/kmac/wiki#deliverables) |
-| Deliverable 1 | [Page1](https://github.com/huitemagico/kmac/wiki/KMAC-Deliverable-1) |
-| Setup | [KMAC Setup](https://github.com/huitemagico/kmac/wiki/KMAC-Setup) |
-| User Manual | [KMAC User Manual](https://github.com/huitemagico/kmac/wiki/KMAC-User-Manual) |
+| Documentation of Development Stage-1 (Deliverable 1) | [Documentation of Deliverable-1](https://github.com/huitemagico/kmac/wiki/KMAC-Deliverable-1) |
+| How Setup the KMAC environment  | [KMAC Setup](https://github.com/huitemagico/kmac/wiki/KMAC-Setup) |
+| User Manual of KMAC| [KMAC User Manual](https://github.com/huitemagico/kmac/wiki/KMAC-User-Manual) |
 
 # Fast Deployment
 1. In one terminal open a Stellar Node and run the soroban-preview docker container
@@ -50,52 +50,78 @@ soroban contract invoke \
     --sender  "kreator"
 ```
 
-# Introduction
- 
-## What is KMAC?
-`@kmac` is a contract build with SOROBAN-SDK that makes an  implementation of an Finite State Machine template,  using knowed design pattern and providing extensible functions capabilities. <br />
+
+# What is KMAC?
+`@kmac` is a contract build with SOROBAN-SDK that makes an  implementation of an Finite State Machine template. <br />
 [GitHub url](https://github.com/huitemagico/kmac)
 
 ![Kmac architecture](pictures/kmac03.vpd.png)
 
  
-# Deliverables
-Note about the deliverables: The following paragraphs (deliverable 1, deliverable 2, etc.) represent the 'deliverables' documented in the offer document. 
+# How clone, run and test 
 
-These are the 'conditions of satisfaction' for the customer, in this case, the SCF team.
+## Soroban version
+The setup use soroban version: 
+```bash
+$ soroban -V
+soroban 20.0.0-rc2 (1c49aed3badc374d46b340b5212a745703c524b2)
+```
+ 
+Important: These instructions are for using the 'kmac2' version on the Testnet updated as of November 22, 2023. Keep in mind that the instructions are for an unstable version and need to be updated accordingly :https://soroban.stellar.org/docs/getting-started/deploy-to-testnet
 
-To view the updated documentation that explains 'how' each deliverable meets the 'conditions of satisfaction' (as well as any issues, problems, pending tasks, or new features) for each KMAC version (KMAC1, KMAC2, etc.), please refer to the corresponding chapter in the KMAC wiki
-For instance, for "Deliverable 1" please see the chapter at link: https://github.com/huitemagico/kmac/wiki#deliverable-1-proof-of-concept-poc-for-design-pattern-implementation
+## (1) Environment setup 
 
+ Please refer to official soroban setup instructions: https://soroban.stellar.org/docs/getting-started/setup
+ The RUSTC version should be rustc 1.72 or newer.
 
-## Deliverable 1: Proof of Concept (POC) for Design Pattern Implementation
+## (2) git clone from github 
+Version of "Stage-1" (Deliverable-1") at https://github.com/huitemagico/kmac/tree/main/contracts/kmac1
+Version (unstable, in progress) of "Stage-2" at https://github.com/huitemagico/kmac/tree/main/contracts/kmac2
 
-Brief Description: Design, coding, and documentation of functional code components using soroban-sdk.   <br />
-This includes the following features:<br />
-
-Security – Allow List Implementation & Role-Based Access Control <br />
-Modularity – Implementation of internal and external functions (basic structure) <br />
-Incorporating parametric components with declarative functionality to enable the use of extensible functions with component reuse. <br />
-Testing of the previous modules <br />
-How to measure completion: <br />
-Code and tests available in https://github.com/huitemagico/kmac <br />
-Announcement in Stellar Development Discord <br />
-Documentation published in dev.to and on KMAC github repository <br />
-Estimated date of completion: November 10 2023 (2 weeks from october 27, 2023) <br />
-
-## Deliverable 2: Functional KMAC Program for Vending Machine Example (Sandbox) <br />
-Brief Description: A soroban-sdk smart contract with hard-coded parameters that define states and transactions for the vending machine example. <br />
- The program is designed to accept transactions from a test module and respond with the new state. 
- Exception conditions are not handled in this version.<br />
-How to Measure Completion:<br />
-Code and tests available in https://github.com/huitemagico/kmac <br />
-Announcement in Stellar Development Discord <br />
-Documentation published in dev.to and on KMAC github repository <br />
-Estimated Date of Completion: December 01 2023 (+3 weeks) <br />
+## cargo, build and run.
 
 
-## Deliverable 3: Documentation Manual for KMAC Usage
-Brief Description: This document serves as a comprehensive manual that provides detailed instructions on working with the KMAC template. It <br />includes information on the various modules, setting new parameters for building different FSMs, reusing design pattern components, and extending <br />functionality. The document also discusses storage alternatives and considerations for network and stand-alone environments.<br />
-How to Measure Completion: This deliverable will be posted in the GitHub repository of the KMAC project and announced in the Stellar discussion <br />chat.
-Estimated Date of Completion: December 8 2023 (+1 week)<br />
+Once the program is downloaded on the local disk, see the steps below:
+
+(1)
+ ```bash
+cd kmac2
+
+cargo test -- --nocapture
+ ```
+Note: the --nocapture  explanation:
+ [Display Options](https://doc.rust-lang.org/cargo/commands/cargo-test.html#display-options)
+ By default the Rust test harness hides output from test execution to keep results readable. Test output can be recovered (e.g., for debugging) by passing --nocapture to the test binaries:
+
+(2) soroban contract build --profile release-with-logs
+
+(3) identities setup:
+
+We need to set up some identities to use for testing and get their public keys: <br />
+For this, run the following shell commands:
+```bash
+soroban config identity generate kreator && \
+
+soroban config identity generate buyer && \
+
+soroban config identity address kreator && \
+
+soroban config identity address buyer
+```
+
+(4) The output of the precedent instruction, gives the 'kreator address'.
+ 
+
+(5) To view the stored values:
+Use readcont.sh 
+
+(6) Understanding the process
+At this step, the contract is prepared for receive the transactions included at the "Stage-1" (Deliverables-1).
+
+For details of the transactions, [please see the chapter "Deliverable-1"](https://github.com/huitemagico/kmac/wiki/KMAC-Deliverable-1)
+For details of the setup process, [please see the chapter "Setup"](https://github.com/huitemagico/kmac/wiki/KMAC-Setup)
+
+(8) More on playing with the program
+Please see "user manual"
+https://github.com/huitemagico/kmac/wiki/KMAC-User-Manual
 
