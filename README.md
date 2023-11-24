@@ -1,9 +1,9 @@
 # kmac
 # About this doc 
-README.md Version November 22, 2023 12:40<br />
+README.md Version November 24, 2023 14:48<br />
 This is README.md file of the kmac project, at the main branch at https://github.com/huitemagico/kmac
 
- *IMPORTANT: This is an overview of the project!*
+ *IMPORTANT: *
 Please see the updated and detailed documentation in detail at following links:
 
 | Content| Link |
@@ -14,7 +14,7 @@ Please see the updated and detailed documentation in detail at following links:
 | Documentation of Development Stage-1 (Deliverable 1) | [Documentation of Deliverable-1](https://github.com/huitemagico/kmac/wiki/KMAC-Deliverable-1) |
 | How Setup the KMAC environment  | [KMAC Setup](https://github.com/huitemagico/kmac/wiki/KMAC-Setup) |
 | User Manual of KMAC| [KMAC User Manual](https://github.com/huitemagico/kmac/wiki/KMAC-User-Manual) |
-
+| kmac2 | [Stage 2 -Deliverable-2] (https://github.com/huitemagico/kmac/wiki/kmac-Stage-2-%E2%80%90-Deliverable-2-Documentation) |
 
 
 
@@ -43,10 +43,9 @@ Important: These instructions are for using the 'kmac2' version on the Testnet u
 
 ## (2) git clone from github 
 Version of "Stage-1" (Deliverable-1") at https://github.com/huitemagico/kmac/tree/main/contracts/kmac1
-Version (unstable, in progress) of "Stage-2" at https://github.com/huitemagico/kmac/tree/main/contracts/kmac2
+Version (in progress) of "Stage-2" at https://github.com/huitemagico/kmac/tree/main/contracts/kmac2
 
 ## cargo, build and run.
-
 
 Once the program is downloaded on the local disk, see the steps below:
 
@@ -82,13 +81,46 @@ soroban config identity address buyer
 (5) To view the stored values:
 Use readcont.sh 
 
-(6) Understanding the process
-At this step, the contract is prepared for receive the transactions included at the "Stage-1" (Deliverables-1).
+ 
+(6) Overview of the steps
 
-For details of the transactions, [please see the chapter "Deliverable-1"](https://github.com/huitemagico/kmac/wiki/KMAC-Deliverable-1)
+(I)
+Configuring the CLI for Testnet
+ https://soroban.stellar.org/docs/getting-started/setup
+
+Configuring the net AIVNET:
+   soroban config network add  AIVNET   --rpc-url https://soroban-testnet.stellar.org:443   
+   --network-passphrase "Test SDF Network ; September 2015"
+
+ (II)
+cargo test -- --nocapture
+
+soroban contract build --profile release-with-logs
+
+soroban contract deploy   --wasm target/wasm32-unknown-unknown/release-with-logs/kmac2.wasm     --source alice   --network AIVNET
+
+This command produce an address
+This address insert here:
+echo "CAVGBSIM2EVCQJKPZMMF4X5PFQZ6MDIZCJBC4AKN2VK335H4ZW4K3THT" > .soroban/kmac2-id
+
+(III) Invoke
+soroban contract invoke   --id $(cat .soroban/kmac2-id) \
+        --source  alice   \
+  --network AIVNET  \
+        --   kmac    \
+  --user GB4QRIXKO4K3QTQFPMFLJ7MSIDIWCBOYSK6C7Q43KJZZ7BX5IB4H74LF         \
+  --value 2    \
+        --message "cldrst"    \
+        --buyer "GBGC5LMJOTEYRHND7AY3GMDNTQPHJ22WMUMWKVBD7D746MLAN3OGVXRP"    \
+        --sender  "kreator"
+
+
+For details of the transactions, 
+[please see the chapter "Stage 1- Deliverable-1"] (https://github.com/huitemagico/kmac/wiki/KMAC-Deliverable-1)
+[please see the chapter "Stage 2 -Deliverable-2"] (https://github.com/huitemagico/kmac/wiki/kmac-Stage-2-%E2%80%90-Deliverable-2-Documentation)
 For details of the setup process, [please see the chapter "Setup"](https://github.com/huitemagico/kmac/wiki/KMAC-Setup)
 
-(8) More on playing with the program
+(7) More on playing with the program
 Please see "user manual"
 https://github.com/huitemagico/kmac/wiki/KMAC-User-Manual
 
