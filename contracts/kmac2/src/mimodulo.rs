@@ -1,55 +1,20 @@
-//use std::fs::File;
-//extern crate std;
-
-
-
-
-
-// pub fn print_str(input: &str) {
-//     //std::println!("{}", input);
-//     0
-// }
-    
-
-// let mut data_file = File::create("data.txt").expect("creation failed");
-
-//     // Write contents to the file
-//     data_file.write("Hello, World!".as_bytes()).expect("write failed");
-
-
+//mimodulo.rs rev Nov 26, 2023
+use soroban_sdk::{Env, String};
+//comm 
 pub fn plus_two(x: u32) -> u32 {
-    x + 2
+    x + 4
 }
 //comm nov 09 cambio a 6x6 
-// pub fn put_coordinates() -> [(usize, usize); 6] {
-//     let mut coordinates: [(usize, usize); 6] = [(0, 0); 6];
+//comm pub fn put_coordinates() -> [(usize, usize); 6] {
+//comm     let mut coordinates: [(usize, usize); 6] = [(0, 0); 6];
 
     pub fn put_coordinates() -> [(usize, usize); 36] {
         let mut coordinates: [(usize, usize); 36] = [(0, 0); 36];
-        //ojo es de 6x6 la mat por lo tato son 36 valores
+        //comm ojo es de 6x6 la mat por lo tato son 36 valores
         let mut idx = 0;
         
-        //let mut fila1: usize = 0;
-        //must be indicated where the FLOW NO EXISTS!
-        //let  row0:usize= 0;
-        //let  col0:usize= 0;
-        //
-       // let row0: usize = 0;      
-        //let  col1:usize = 0;
-        //
-        //let  row0:usize= 0;
-        //let  col2:usize= 0;
-        //
-        //let  row1:usize= 0;
-        //let  col0:usize= 0;
-        //
-        //let  row1:usize= 0;
-        //let  col1:usize= 0;
-        //
-        //let  row1:usize= 0;
-        //let  col2:usize= 0;
-        //
-        coordinates[idx] = (0,0);idx = idx+1;
+        
+        //coordinates[idx] = (0,0);idx = idx+1;
         coordinates[idx] = (0,2);idx = idx+1;
         
         coordinates[idx] = (0,3);idx = idx+1;
@@ -63,7 +28,9 @@ pub fn plus_two(x: u32) -> u32 {
         coordinates[idx] = (1,5); idx = idx+1;
         coordinates[idx] = (2,0); idx = idx+1;
         coordinates[idx] = (2,1); idx = idx+1;
-        coordinates[idx] = (2,4); idx = idx+1;
+        coordinates[idx] = (2,2); idx = idx+1;
+        
+        //selcofblnd  ==(2,4)==17 coordinates[idx] = (2,4); idx = idx+1;
         coordinates[idx] = (2,5); idx = idx+1;
         coordinates[idx] = (3,1); idx = idx+1;
         coordinates[idx] = (3,3); idx = idx+1;
@@ -85,10 +52,82 @@ pub fn plus_two(x: u32) -> u32 {
         
     }
 
+    // pub fn plus_two(x: u32) -> u32 {
+    //     x + 4
+    // }
+//function "msj_t_num_usr". Edit this function for adding new user transaction.
+//the number returned must be the location of the transaction in the matrix
+//NOT the funtion number
+pub fn msj_t_num_usr(env:&Env ,strmsj: &String)-> i32 {
+    //let selcofblnd = "selcofblnd";
+    let sselcofblnd = String::from_slice(&env, "selcofblnd");
+    //let buyerpay = "buyerpay";
+    let sbuyerpay = String::from_slice(&env,"buyerpay");
+    let sretactiv = String::from_slice(&env,"retactiv");
+    let serr01 = String::from_slice(&env,"err01");
+    if *strmsj==sselcofblnd {
+        return 17;
+    }
+    if *strmsj==sbuyerpay {
+        return 30;
+    }
+    if *strmsj==sretactiv {
+        return 33;
+    }
+    if *strmsj==serr01{
+        return 34;
+    }
+    return 9999;
+}
 
+pub fn function7(env:&Env )-> String {
+    //fn savemsg (env:&Env ,nummsj: usize, msg1: &mut String,msg2: &mut String, 
+    //let env = Env::default();
+    let selcofblnd = "SELECTED COFFEE BLEND!";
+    let sselcofblnd = String::from_slice(&env, selcofblnd);
+    
+    return sselcofblnd;
+}
+pub fn function8(env:&Env )-> String {
+    let sf8 = String::from_slice(&env, "BUYER PAYED");
+    //payment done. It suppose the vending machine delivers the coffee right
+    //in an more real simulation, these functions must return an abnormal result,
+    //when for instance, the coffee not fill the cup.
+    return sf8;
+}
+pub fn function9(env:&Env )-> String {
+    let sf8 = String::from_slice(&env, "RET ACTIV");
+    return sf8;
+}
+pub fn function10(env:&Env )-> String {
+    let sf8 = String::from_slice(&env, "ERR01");
+    return sf8;
+}
+pub fn function11(env:&Env )-> String {
+    let sf8 = String::from_slice(&env, "F11 DUMMY");
+    return sf8;
+}
+pub fn function12(env:&Env )-> String {
+    let sf8 = String::from_slice(&env, "F12 DUMMY");
+    return sf8;
+}
+pub fn function13(env:&Env )-> String {
+    let sf8 = String::from_slice(&env, "F13 DUMMY");
+    return sf8;
+}
+pub fn function14(env:&Env )-> String {
+    let sf8 = String::from_slice(&env, "F14 DUMMY");
+    return sf8;
+}
+pub fn function15(env:&Env )-> String {
+    let sf8 = String::from_slice(&env, "F15 DUMMY");
+    return sf8;
+}
 //matrix of the core functions
-//must not be modified!
-//the numbers are NOT ARBITRARY.It must follow 1,2 3, etc. These are the "functions numbering"
+//(a) IMPORTANT NOTE: the values between matrixnum[0][0] until
+//matrixnum[3][2]=6; MUST NOT BE MODIFIED!
+//(b) The user could add new trx from matrixnum[2][4]
+//(c) the numbers are NOT ARBITRARY.It must follow 1,2 3, etc. These are the "functions numbering"
     pub fn put_corefunc() -> [[i32; 6]; 6] {
         //cell <> 0 must be indicated where the FUNCTION REALLY EXISTS!
         let mut matrixnum: [[i32; 6]; 6] = [[0; 6]; 6];
@@ -104,74 +143,14 @@ pub fn plus_two(x: u32) -> u32 {
     matrixnum[2][3]=4;
     matrixnum[3][0]=5;
     matrixnum[3][2]=6;
-    
-
-    
+    //FROM HERE begins the user  functions
+    matrixnum[2][4]=7;
+    //f7==(2,4)==selcofblnd selected coffee blend==function number 7
+    matrixnum[4][5]=8;
+    //f8==(4,5)==buyerpay==function number 8
+    matrixnum[5][2]=9;
+    //f9==(5,2)==retactiv==function number 9 "return to activity", after deliver coffee
+    //END the user  functions
     matrixnum
     }
-
-// fn get_mat (mat: [[String; 3]; 2]) -> String {
-        //     use soroban_sdk::{Env, String};
-        //    // "hola" ESTO DA MISMATCHED TYPES EXPECTED STRTING FOUND &STR
-        //    //let mut matstring= String::from_slice(&env, "trueley");
-        //    //let mut matstring=mat [1][1];
-        //    let s1: &str = clone(mat [1][1]);
-        // }
-           
-          //--------------------------------columnas----filas
-        //   fn find_string_in_matrix(matrix: &[[String; 3]; 2], target: &String) -> (usize, usize) {
-        //     let mut fila1: usize = 0;
-        //     let mut colu1: usize = 0;
-        //     for (row_idx, row) in matrix.iter().enumerate() {
-        //         for (col_idx, element) in row.iter().enumerate()   {
-        //             if element == target {
-        //                 fila1=row_idx;
-        //                 colu1=col_idx;                     
-        //             }                
-        //         }                 
-        //     }
-        //     return (fila1,colu1);  
-        //     }
-        
-          // for (row_idx, row) in matrix.iter().enumerate() {
-            //     for (col_idx, element) in row.iter().enumerate()   {
-            //         if element == target {
-            //             fila1=row_idx;
-            //             colu1=col_idx;
-                        
-                     
-            //         }
-                     
-            //         }
-            //     }
-            
-            //
-
-/* 
-pub fn Ext_Fill_Mat(matrix: &mut [[String; 3]; 2], String string00) {
-    
-            matrix[1][1] = string00;
-        
-    }
-    */
-    //-NO FUNCIONA -------------EJ E M P L O   M A T R I Z   D E F I N I T I O N    ---D O S ---
-/* no existe to_string
-let matrix: [[String; 3]; 3] = [
-        ["foo".to_string(), "bar".to_string(), "baz".to_string()],
-        ["qux".to_string(), "quux".to_string(), "corge".to_string()],
-        ["grault".to_string(), "garply".to_string(), "waldo".to_string()],
-    ];
-*/
-//--------------FIN EJ E M P L O   M A T R I Z   D E F I N I T I O N    ---D O S ---
-
- 
-        //--------------------------------------ejemplo como recorrer la matriz--------------------------------------
-        // NO SE COMO RESCATAR UN VALOR DESDE LA MATRIZ
-        //lo sig entrega mismatched type expected &str found String
-        //let mut string2=     String::from_slice(&env, two_dimensional_array[1][1]);
-        //veamos en https://google.github.io/comprehensive-rust/basic-syntax/string-slices.html
-        //supongamos que lo que quiero es un String, al estilo de stringbool1 , erscatado desde la matriz.
-        /*
-        ahora bien, podria directamante ver los valores de la matriz (que son String).. y pasarlo al vector de salida
-        */     
 

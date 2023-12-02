@@ -1,6 +1,6 @@
 # kmac
 # About this doc 
-README.md Version November 24, 2023 14:48<br />
+README.md Version December 03 2023 15:06<br />
 This is README.md file of the kmac project, at the main branch at https://github.com/huitemagico/kmac
 
  *IMPORTANT: *
@@ -14,7 +14,7 @@ Please see the updated and detailed documentation in detail at following links:
 | Documentation of Development Stage-1 (Deliverable 1) | [Documentation of Deliverable-1](https://github.com/huitemagico/kmac/wiki/KMAC-Deliverable-1) |
 | How Setup the KMAC environment  | [KMAC Setup](https://github.com/huitemagico/kmac/wiki/KMAC-Setup) |
 | User Manual of KMAC| [KMAC User Manual](https://github.com/huitemagico/kmac/wiki/KMAC-User-Manual) |
-| kmac2 | [Stage 2 -Deliverable-2] (https://github.com/huitemagico/kmac/wiki/kmac-Stage-2-%E2%80%90-Deliverable-2-Documentation) |
+|  Documentation of Development Stage-2 (Deliverable 2) | [Stage 2 -Deliverable-2] (https://github.com/huitemagico/kmac/wiki/kmac-Stage-2-%E2%80%90-Deliverable-2-Documentation) |
 
 
 
@@ -42,8 +42,10 @@ Important: These instructions are for using the 'kmac2' version on the Testnet u
  The RUSTC version should be rustc 1.72 or newer.
 
 ## (2) git clone from github 
-Version of "Stage-1" (Deliverable-1") at https://github.com/huitemagico/kmac/tree/main/contracts/kmac1
 Version (in progress) of "Stage-2" at https://github.com/huitemagico/kmac/tree/main/contracts/kmac2
+
+git clone  https://github.com/huitemagico/kmac
+cd contracts/kmac2
 
 ## cargo, build and run.
 
