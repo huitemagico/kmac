@@ -1,6 +1,9 @@
 # kmac
 # About this doc 
 README.md Version December 03 2023 15:06<br />
+Please see the following wiki page for details:
+https://github.com/huitemagico/kmac/wiki/KMAC-Stage-2-%E2%80%90-Deliverable-2-Documentation
+
 This is README.md file of the kmac project, at the main branch at https://github.com/huitemagico/kmac
 
  *IMPORTANT: *
