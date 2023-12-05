@@ -1,6 +1,6 @@
 # kmac
 # About this doc 
-README.md Version December 03 2023 15:06<br />
+README.md Version December 05 2023 18:06 <br />
 Please see the following wiki page for details:
 https://github.com/huitemagico/kmac/wiki/KMAC-Stage-2-%E2%80%90-Deliverable-2-Documentation
 
@@ -18,6 +18,7 @@ Please see the updated and detailed documentation in detail at following links:
 | How Setup the KMAC environment  | [KMAC Setup](https://github.com/huitemagico/kmac/wiki/KMAC-Setup) |
 | User Manual of KMAC| [KMAC User Manual](https://github.com/huitemagico/kmac/wiki/KMAC-User-Manual) |
 |  Documentation of Development Stage-2 (Deliverable 2) | [Stage 2 -Deliverable-2] (https://github.com/huitemagico/kmac/wiki/kmac-Stage-2-%E2%80%90-Deliverable-2-Documentation) |
+|  Design Patterns(kmac2.0 Deliverable 2)...in progress | [Stage 2] (https://github.com/huitemagico/kmac/wiki/Design-Patterns) |
 
 
 
