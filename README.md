@@ -1,6 +1,6 @@
 # kmac
 # About this doc 
-README.md Version December 05 2023 18:06 <br />
+README.md Version December 07 2023 20:46 <br />
 Please see the following wiki page for details:
 https://github.com/huitemagico/kmac/wiki/KMAC-Stage-2-%E2%80%90-Deliverable-2-Documentation
 
@@ -67,22 +67,7 @@ Note: the --nocapture  explanation:
 
 (2) soroban contract build --profile release-with-logs
 
-(3) identities setup:
-
-We need to set up some identities to use for testing and get their public keys: <br />
-For this, run the following shell commands:
-```bash
-soroban config identity generate kreator && \
-
-soroban config identity generate buyer && \
-
-soroban config identity address kreator && \
-
-soroban config identity address buyer
-```
-
-(4) The output of the precedent instruction, gives the 'kreator address'.
- 
+Steps 3 and 4 deleted.
 
 (5) To view the stored values:
 Use readcont.sh 
