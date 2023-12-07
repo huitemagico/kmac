@@ -1,16 +1,14 @@
-//mimodulo.rs rev Nov 26, 2023
+//kmacusermod  rev kmac2.0 December 07, 2023
 use soroban_sdk::{Env, String};
-//comm 
-pub fn plus_two(x: u32) -> u32 {
+// 
+pub fn _plus_two(x: u32) -> u32 {
     x + 4
 }
-//comm nov 09 cambio a 6x6 
-//comm pub fn put_coordinates() -> [(usize, usize); 6] {
-//comm     let mut coordinates: [(usize, usize); 6] = [(0, 0); 6];
+
 
     pub fn put_coordinates() -> [(usize, usize); 36] {
         let mut coordinates: [(usize, usize); 36] = [(0, 0); 36];
-        //comm ojo es de 6x6 la mat por lo tato son 36 valores
+        // 6x6 matrix => 36 cells
         let mut idx = 0;
         
         
@@ -91,7 +89,7 @@ pub fn function7(env:&Env )-> String {
 pub fn function8(env:&Env )-> String {
     let sf8 = String::from_slice(&env, "BUYER PAYED");
     //payment done. It suppose the vending machine delivers the coffee right
-    //in an more real simulation, these functions must return an abnormal result,
+    //in an more real simulation, these functions could return an abnormal result,
     //when for instance, the coffee not fill the cup.
     return sf8;
 }
@@ -103,22 +101,32 @@ pub fn function10(env:&Env )-> String {
     let sf8 = String::from_slice(&env, "ERR01");
     return sf8;
 }
+//NOTE ABOUT THE FUNCTIONS WITH ALLOW DEAD CODE
+//These are functions that could be fulfilled with extensions.
+//Please see the explanation at https://github.com/huitemagico/kmac/wiki/KMAC-User-Manual#the-three-views-of-kmac-
+//paragraph "Extensions"
+//
+#[allow(dead_code)]
 pub fn function11(env:&Env )-> String {
     let sf8 = String::from_slice(&env, "F11 DUMMY");
     return sf8;
 }
+#[allow(dead_code)]
 pub fn function12(env:&Env )-> String {
     let sf8 = String::from_slice(&env, "F12 DUMMY");
     return sf8;
 }
+#[allow(dead_code)]
 pub fn function13(env:&Env )-> String {
     let sf8 = String::from_slice(&env, "F13 DUMMY");
     return sf8;
 }
+#[allow(dead_code)]
 pub fn function14(env:&Env )-> String {
     let sf8 = String::from_slice(&env, "F14 DUMMY");
     return sf8;
 }
+#[allow(dead_code)]
 pub fn function15(env:&Env )-> String {
     let sf8 = String::from_slice(&env, "F15 DUMMY");
     return sf8;

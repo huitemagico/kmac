@@ -1,7 +1,7 @@
 #![no_std]
-// kmac2 rev December 02 2023 1057
+// kmac2.0 delivery stage 2 rev December 07 1904
 // see https://github.com/huitemagico/kmac/wiki
-mod mimodulo;
+mod kmacusermod;
 use soroban_sdk::{contract, contractimpl,contracttype, symbol_short,Address,  vec, Env, String, Symbol, Vec,log,BytesN};
 #[contracttype]
 pub enum DataKey {
@@ -12,26 +12,19 @@ pub enum DataKey2 {
     UsrAdr(BytesN<32>),
     UsrNme,
 }
-
-use mimodulo::plus_two;
-pub trait Suma2{
-    fn plus_two(&self, env: Env,x: u32) -> u32;
-  }
 pub trait PutMat{
     fn put_coordinates (&self, env: Env) -> [(usize, usize); 9];
   }
 pub trait InitMat{
      fn put_corefunc (&self, env: Env) -> [[i32; 6]; 6];
 }
-pub trait ExtFunc{
-    fn extfunc1 (&self, env: Env) -> [[i32; 6]; 6];
-}
-//
+//com  fn extfunc1 (&self, env: Env) -> [[i32; 6]; 6];
 const COUNTER: Symbol = symbol_short!("COUNTER");
 const OLD_MSG: Symbol = symbol_short!("OLD_MSG");
 const KSTADR: Symbol = symbol_short!("KSTADR");
 const B1STAD: Symbol = symbol_short!("B1STAD"); 
-const MCSTAT: Symbol = symbol_short!("MCSTAT"); //state of the machine !!
+const MCSTAT: Symbol = symbol_short!("MCSTAT"); 
+//state of the machine !!
 
 mod test;
 
@@ -43,19 +36,22 @@ impl KmacContract {
 
        pub fn kmac    (env: Env,  user: Address, buyer: Address, value: u32, message: String, sender:String ) -> 
        //(  u32,u32, u32, u32, Vec<String>, bool,i32,i32,i32,i32,i32,i32) {
-        (  u32,u32, u32, u32, Vec<String>, Vec<i32>) {
+        (  
+             Vec<String>, Vec<i32>) {
   
 
-let mut stringbool1= String::from_slice(&env, "sbool1");
+
+let gral_trace :bool=false;
+
 //let mut stringbool1ad:&String;
 //let mut stringbool2ad:&String;
 
-let mut stringbool2= String::from_slice(&env, "trueley22");
-let stringbool3= String::from_slice(&env, "trueley22");
-let stringbool4= String::from_slice(&env, "trueley22");
-let stringbool5= String::from_slice(&env, "trueley22");
-let stringbool6= String::from_slice(&env, "trueley22");
-let stringbool7= String::from_slice(&env, "trueley22");
+let mut stringbool2= String::from_slice(&env, ".");
+let stringbool3= String::from_slice(&env, ".");
+let stringbool4= String::from_slice(&env, ".");
+let stringbool5= String::from_slice(&env, ".");
+let stringbool6= String::from_slice(&env, ".");
+let stringbool7= String::from_slice(&env, ".");
 //
 let testmsjguardado1 = "???";
 let mut smsg1= String::from_slice(&env, testmsjguardado1);
@@ -82,11 +78,14 @@ let selcofblnd = String::from_slice(&env, "selcofblnd");
 let resetmessage = String::from_slice(&env, "reset"); 
 let clonemsg=  message.clone();
 //
+//NOTE: the "veci32[]-tracer" of the result panel is FIXED. This means that the code of the
+//     core is NOT possible change, (unless you know what that means)
 let mut nummsg=msjtonum (&clonemsg, &scldrst,&srstkadm,&svb1adrms,&selcofblnd);
 if nummsg ==9999 {
-    nummsg=mimodulo::msj_t_num_usr (&env,&clonemsg);
+    nummsg=kmacusermod::msj_t_num_usr (&env,&clonemsg);
     //usr function "convert string message to number"
 }
+let mut stringbool1= String::from_slice(&env, "numm msg");  
 if  iveci32<19 {veci32[iveci32] = nummsg;iveci32=iveci32+1;}
 //
 //|--------|--------|--------|--------|--------|--------|--------|
@@ -126,7 +125,7 @@ let mut matrixnum: [[i32; 6]; 6] = [[0; 6]; 6];
         }
     }
 
-let coordinates = mimodulo::put_coordinates();
+let coordinates = kmacusermod::put_coordinates();
 log!(&env, "logging when the coordinates put the values in matrixnum ");
 
  for row in 0..5{
@@ -143,7 +142,7 @@ log!(&env, "logging when the coordinates put the values in matrixnum ");
     }
 }
 //
-
+    if gral_trace {
     inummsg=inummsg+1;
     if inummsg <8{
         let matrixnuminit  = String::from_slice(&env, "MATRIXNUM INIT end.");
@@ -156,11 +155,12 @@ log!(&env, "logging when the coordinates put the values in matrixnum ");
             matrixnuminit);
         
     }
+    }
 
 
 log!(&env, "CORE init functions definition for the matrix function");
 let corefuncmat: [[i32; 6]; 6] ;
-corefuncmat = mimodulo::put_corefunc();
+corefuncmat = kmacusermod::put_corefunc();
 let mut filita:i32;
 let mut cmnita:i32;
 for row in 0..5 { 
@@ -179,6 +179,7 @@ for row in 0..5 {
     }
 }
 if  iveci32<19 {veci32[iveci32] = 77777;}
+    if gral_trace {
     inummsg=inummsg+1;
     if inummsg <8{
         let corefuncmatend  = String::from_slice(&env, "COREFUNCMAT end.");
@@ -190,6 +191,7 @@ if  iveci32<19 {veci32[iveci32] = 77777;}
             &mut smsg7,
             corefuncmatend);
         
+    }
     }
 //
 let current_contract_add = env.current_contract_address();
@@ -211,9 +213,13 @@ log!(&env, "current_contract_add: {}", current_contract_add);
 // (a)    save for work message received
         let ln1: u32;
         ln1 = message.len();  //length of message received
+       if  iveci32<11 {veci32[iveci32] = ln1 as i32;iveci32=iveci32+1;}
         
         let mut count: u32 = env.storage().persistent().get(&COUNTER).unwrap_or(0); 
+env.events()
+            .publish((COUNTER, symbol_short!("increment")), count);
         count += 1;
+        if  iveci32<11 {veci32[iveci32] = ln1 as i32;iveci32=iveci32+1;}
         let mut old_message = env
             .storage()
             .persistent()
@@ -225,7 +231,6 @@ log!(&env, "current_contract_add: {}", current_contract_add);
         }
         env.storage().persistent().set(&OLD_MSG, &message);
         env.storage().persistent().set(&COUNTER, &count);
-        count = plus_two (count);
 //
 
 
@@ -254,7 +259,7 @@ fnnumber= corefuncmat [crow][ccol];
 let  rwval= crow as i32;
 let  clval= ccol as i32;
 log!(&env, "corefuncmat returns fn number {} with row {} col {}",fnnumber, rwval, clval);
-
+        if gral_trace {
         inummsg=inummsg+1;
         if inummsg <8{
         let getfnnumend  = String::from_slice(&env, "GET FN NUM END");
@@ -267,36 +272,39 @@ log!(&env, "corefuncmat returns fn number {} with row {} col {}",fnnumber, rwval
             getfnnumend);
         
     }
+    }
 let mut crstatec = String::from_slice(&env, "X");
 let nostatecond = String::from_slice(&env, "X");
 if is_init_stat(&env) { 
         crstatec =get_curr_st(&env);
         //stringbool1=set_keyb   (&env , clonebuyer);
    }
+let curr_state=crstatec;
+let mut curr_state2=curr_state.clone ();
+inummsg=inummsg+1;
+if inummsg <8{
+    //let nostatems  = String::from_slice(&env, "MCSTAT not existed");
+    savemsg (&env, inummsg, &mut smsg1, &mut smsg2,
+        &mut smsg3,
+        &mut smsg4,
+        &mut smsg5,
+        &mut smsg6,
+        &mut smsg7,
+        curr_state);
+    
+}
+
 let  initstatefmsg : String;//::from_slice(&env, "X");
 let  endstatefmsg ;//= String::from_slice(&env, "X");
 initstatefmsg=get_str_st( &env ,crow) ;
 endstatefmsg=get_str_st( &env ,ccol) ;
 //
-if crstatec ==nostatecond {
-    inummsg=inummsg+1;
-    if inummsg <8{
-        let nostatems  = String::from_slice(&env, "is_initStat:no existed MCSTAT");
-        savemsg (&env, inummsg, &mut smsg1, &mut smsg2,
-            &mut smsg3,
-            &mut smsg4,
-            &mut smsg5,
-            &mut smsg6,
-            &mut smsg7,
-            nostatems);
         
-    }
     
-}
 let str_trx_bad  = String::from_slice(&env, "Trx DECLINED");
 let  compbool:bool;
 if fnnumber==1 {compbool = true;}
-else  {compbool= cmp_curr_prop (&crstatec, &initstatefmsg);}
+else  {compbool= cmp_curr_prop (&curr_state2, &initstatefmsg);}
 
 
 let fnname:String;
@@ -307,210 +315,344 @@ fnname=n_to_str (&env,fnnumber);
      savemsg (&env, inummsg, &mut smsg1, &mut smsg2,&mut smsg3,
      &mut smsg4,&mut smsg5,&mut smsg6,&mut smsg7,
      fnname  );}
-match fnnumber {
-    1=> {
-        log!(&env, "match nummsg: (1) cldrst call coldreset.");
-        
-        let result=coldreset (&env);
-        match result {
-            Ok(code) => {log!(&env, "ok {} Ok", code)},
-            Err(code) => log!(&env, "Error {}", code),
+if  compbool
+{
+          match fnnumber 
+          {
+               1=> 
+               {
+                   let result=coldreset (&env);
+                   match result {
+                   Ok(code) => {log!(&env, "ok {} Ok", code)},
+                   Err(code) => log!(&env, "Error {}", code),
+                   }
+               }//end case 1
+               2 =>
+               {   
+                 //srstkadm==rstkadm==nummsg=2
+                 let strx2_m1:String;
+                 let strx2_m2:String;
+                  (strx2_m1, strx2_m2)=reset_key (&env, kstradrex,strfalse,cloneuser );
+                      inummsg=inummsg+1; if inummsg <8{
+                        savemsg (&env, inummsg, &mut smsg1, &mut smsg2, &mut smsg3,&mut smsg4, &mut smsg5,
+                         &mut smsg6,&mut smsg7,strx2_m1);}
+                      inummsg=inummsg+1; if inummsg <8{
+                        savemsg (&env, inummsg, &mut smsg1, &mut smsg2, &mut smsg3,&mut smsg4, &mut smsg5,
+                          &mut smsg6,&mut smsg7,strx2_m2);}
+                }    //end case 2
+               3=> 
+               {    
+                 let clonebuyer=  buyer.clone();
+                 let strx3_m1:String;
+                 strx3_m1=set_keyb   (&env , clonebuyer);
+               }//end case 3
+               4=> 
+               { 
+                 stringbool1=dummyfunc   (&env , &user);
+               }
+               5=> 
+               {    log!(&env, "offline");
+                 stringbool1=dummyfunc   (&env , &user);
+               }
+               6=> 
+               {     log!(&env, "reactivation");
+                      stringbool1=dummyfunc   (&env , &user);
+               }
+               7=> 
+               {     
+                
+                    let kstatee = String::from_slice(&env, "E");
+                    let result=set_state (&env,&kstatee);
+                    match result 
+                    {
+                        Ok(code) => log!(&env, "ok {} Ok", code),
+                        Err(code) => log!(&env, "Error {}", code),
+                    }
+                }
+                8=> {
+                               
+                                  kmacusermod::function8(&env);
+                                  let result=trx_proc (&env, &endstatefmsg)  ;
+                                  match result {
+                                      Ok(code) => log!(&env, "ok {} Ok", code),
+                                      Err(code) => log!(&env, "Error {}", code),
+                                  }
+                                  inummsg=inummsg+1;
+                                  if inummsg <8{
+                                       let fn8ok  = String::from_slice(&env, "Function 8 ok");
+                                       savemsg (&env, inummsg, &mut smsg1, &mut smsg2,&mut smsg3,
+                                       &mut smsg4,&mut smsg5,&mut smsg6,&mut smsg7, fn8ok);
+                                        }
+                                  
+                         
+                      }
+                9=> {
+                    kmacusermod::function9(&env);
+                    let result=trx_proc (&env, &endstatefmsg)  ;
+                    match result {
+                        Ok(code) => log!(&env, "ok {} Ok", code),
+                        Err(code) => log!(&env, "Error {}", code),
+                    }
+                    inummsg=inummsg+1;
+                    if inummsg <8{
+                         let fnok  = String::from_slice(&env, "Function 9 ok");
+                         savemsg (&env, inummsg, &mut smsg1, &mut smsg2,&mut smsg3,
+                      &mut smsg4,&mut smsg5,&mut smsg6,&mut smsg7, fnok);
+                    }
+     
+ 
+                }
+           10=> {
+                kmacusermod::function10(&env);
+                let result=trx_proc (&env, &endstatefmsg)  ;
+                match result {
+                  Ok(code) => log!(&env, "ok {} Ok", code),
+                  Err(code) => log!(&env, "Error {}", code),
+                }
+                inummsg=inummsg+1;
+                if inummsg <8{
+                   let fnok  = String::from_slice(&env, "Function 10 ok");
+                   savemsg (&env, inummsg, &mut smsg1, &mut smsg2,&mut smsg3,
+                  &mut smsg4,&mut smsg5,&mut smsg6,&mut smsg7, fnok);
+                }
+    
+                }
+            _=> {
+                log!(&env, " ???");
+                }
+
+           }//end match 
+  }else {
+                    inummsg=inummsg+1;
+                    if inummsg <8{
+                       savemsg (&env, inummsg, &mut smsg1, &mut smsg2,
+                       &mut smsg3,
+                       &mut smsg4,
+                       &mut smsg5,
+                       &mut smsg6,
+                       &mut smsg7,
+                       str_trx_bad);
+                    }
         }
-    }
-    2 =>{  
-        log!(&env, "match nummsg: (2) rstkadm call reset.");
-       
-        if  compbool{
-              (stringbool1, stringbool2)=reset_key (&env, kstradrex,strfalse,cloneuser );
-              log!(&env, "match nummsg: (2) rstkadm call reset.", stringbool1, stringbool2);
+
+        curr_state2=get_curr_st(&env);
               inummsg=inummsg+1;
               if inummsg <8{
-                 let str_rstkadm_st  = String::from_slice(&env, "Trx rstkadm ok");
+                 //let str_rstkadm_st  = String::from_slice(&env, "Trx rstkadm ok");
                  savemsg (&env, inummsg, &mut smsg1, &mut smsg2,
                  &mut smsg3,
                  &mut smsg4,
                  &mut smsg5,
                  &mut smsg6,
                  &mut smsg7,
-                 str_rstkadm_st);
+                 curr_state2);
         
                 }
-                
-            }else {
-                inummsg=inummsg+1;
-                if inummsg <8{
-                   savemsg (&env, inummsg, &mut smsg1, &mut smsg2,
-                   &mut smsg3,
-                   &mut smsg4,
-                   &mut smsg5,
-                   &mut smsg6,
-                   &mut smsg7,
-                   str_trx_bad);
-          
-                   }
-                }
-        }
-    3=> {    
-            if  compbool{
-                  log!(&env, "svb1adrms");
-                  let clonebuyer=  buyer.clone();
-                  stringbool1=set_keyb   (&env , clonebuyer);
-                  inummsg=inummsg+1;
-                  if inummsg <8{
-                     let str_rstkadm_st  = String::from_slice(&env, "Trx svb1adrms ok");
-                     savemsg (&env, inummsg, &mut smsg1, &mut smsg2,
-                     &mut smsg3,
-                     &mut smsg4,
-                     &mut smsg5,
-                     &mut smsg6,
-                     &mut smsg7,
-                     str_rstkadm_st);
-                     }
-            }else {
-                inummsg=inummsg+1;
-                if inummsg <8{
-                   savemsg (&env, inummsg, &mut smsg1, &mut smsg2,
-                   &mut smsg3,
-                   &mut smsg4,
-                   &mut smsg5,
-                   &mut smsg6,
-                   &mut smsg7,
-                   str_trx_bad);
-                }
-            }
-   
-        }
-    4=> {     log!(&env, "maintenance");
-              stringbool1=dummyfunc   (&env , &user);
-        }
-    5=> {     log!(&env, "offline");
-              stringbool1=dummyfunc   (&env , &user);
-        }
-    6=> {     log!(&env, "reactivation");
-              stringbool1=dummyfunc   (&env , &user);
-        }
-    7=> {     
-              inummsg=inummsg+1;
-              if inummsg <8
-               {
-                     let str_f7  = String::from_slice(&env, "Function 7");
-                     savemsg (&env, inummsg, &mut smsg1, &mut smsg2,
-                     &mut smsg3,
-                     &mut smsg4,
-                     &mut smsg5,
-                     &mut smsg6,
-                     &mut smsg7,
-                     str_f7);
-        
-                }
-                if  compbool{
-                    let kstatee = String::from_slice(&env, "E");
-                    let result=set_state (&env,&kstatee);
-                    match result {
-                        Ok(code) => log!(&env, "ok {} Ok", code),
-                        Err(code) => log!(&env, "Error {}", code),
-                    }
-                      inummsg=inummsg+1;
-                      if inummsg <8{
-                         let str_rstkadm_st  = String::from_slice(&env, "Trx svb1adrms ok");
-                         savemsg (&env, inummsg, &mut smsg1, &mut smsg2,
-                         &mut smsg3,
-                         &mut smsg4,
-                         &mut smsg5,
-                         &mut smsg6,
-                         &mut smsg7,
-                         str_rstkadm_st);
-                
-                        }
-                }else
-                    {
-                        inummsg=inummsg+1;
-                        if inummsg <8{
-                              savemsg (&env, inummsg, &mut smsg1, &mut smsg2,
-                              &mut smsg3,
-                              &mut smsg4,
-                              &mut smsg5,
-                              &mut smsg6,
-                              &mut smsg7,
-                              str_trx_bad);
-                  
-                        }
-                    }
-           
-        }
-       
-        8=> {
-            if  compbool{
-              mimodulo::function8(&env);
-              let result=trx_proc (&env, &endstatefmsg)  ;
-              match result {
-                  Ok(code) => log!(&env, "ok {} Ok", code),
-                  Err(code) => log!(&env, "Error {}", code),
-              }
-              inummsg=inummsg+1;
-              if inummsg <8{
-                   let fn8ok  = String::from_slice(&env, "Function 8 ok");
-                   savemsg (&env, inummsg, &mut smsg1, &mut smsg2,&mut smsg3,
-                   &mut smsg4,&mut smsg5,&mut smsg6,&mut smsg7, fn8ok);
-                    }
-          }else
-              {   
-                  inummsg=inummsg+1;
-                  if inummsg <8{savemsg (&env, inummsg, &mut smsg1, &mut smsg2,&mut smsg3,
-                        &mut smsg4,&mut smsg5,&mut smsg6,&mut smsg7,str_trx_bad);}
-               }
-     
-  }
-  9=> {
-   
-      if  compbool{
-          mimodulo::function9(&env);
-          let result=trx_proc (&env, &endstatefmsg)  ;
-          match result {
-              Ok(code) => log!(&env, "ok {} Ok", code),
-              Err(code) => log!(&env, "Error {}", code),
-          }
-          inummsg=inummsg+1;
-          if inummsg <8{
-               let fnok  = String::from_slice(&env, "Function 9 ok");
-               savemsg (&env, inummsg, &mut smsg1, &mut smsg2,&mut smsg3,
-               &mut smsg4,&mut smsg5,&mut smsg6,&mut smsg7, fnok);
-                }
-      }else
-          {   
-              inummsg=inummsg+1;
-              if inummsg <8{savemsg (&env, inummsg, &mut smsg1, &mut smsg2,&mut smsg3,
-                    &mut smsg4,&mut smsg5,&mut smsg6,&mut smsg7,str_trx_bad);}
-           }
- 
-}
-10=> {
-   
-    if  compbool{
-        mimodulo::function10(&env);
-        let result=trx_proc (&env, &endstatefmsg)  ;
-        match result {
-            Ok(code) => log!(&env, "ok {} Ok", code),
-            Err(code) => log!(&env, "Error {}", code),
-        }
-        inummsg=inummsg+1;
-        if inummsg <8{
-             let fnok  = String::from_slice(&env, "Function 10 ok");
-             savemsg (&env, inummsg, &mut smsg1, &mut smsg2,&mut smsg3,
-             &mut smsg4,&mut smsg5,&mut smsg6,&mut smsg7, fnok);
-              }
-    }else
-        {   
-            inummsg=inummsg+1;
-            if inummsg <8{savemsg (&env, inummsg, &mut smsg1, &mut smsg2,&mut smsg3,
-                  &mut smsg4,&mut smsg5,&mut smsg6,&mut smsg7,str_trx_bad);}
-         }
 
-}
-    _=> {
-        log!(&env, "no se ???");}
+// match fnnumber {
+//     1=> {
+//         log!(&env, "match nummsg: (1) cldrst call coldreset.");
+        
+//         let result=coldreset (&env);
+//         match result {
+//             Ok(code) => {log!(&env, "ok {} Ok", code)},
+//             Err(code) => log!(&env, "Error {}", code),
+//         }
+//     }
+//     2 =>{  
+//         log!(&env, "match nummsg: (2) rstkadm call reset.");
+       
+//         if  compbool{
+//               (stringbool1, stringbool2)=reset_key (&env, kstradrex,strfalse,cloneuser );
+//               log!(&env, "match nummsg: (2) rstkadm call reset.", stringbool1, stringbool2);
+//               inummsg=inummsg+1;
+//               if inummsg <8{
+//                  let str_rstkadm_st  = String::from_slice(&env, "Trx rstkadm ok");
+//                  savemsg (&env, inummsg, &mut smsg1, &mut smsg2,
+//                  &mut smsg3,
+//                  &mut smsg4,
+//                  &mut smsg5,
+//                  &mut smsg6,
+//                  &mut smsg7,
+//                  str_rstkadm_st);
+        
+//                 }
+                
+//             }else {
+//                 inummsg=inummsg+1;
+//                 if inummsg <8{
+//                    savemsg (&env, inummsg, &mut smsg1, &mut smsg2,
+//                    &mut smsg3,
+//                    &mut smsg4,
+//                    &mut smsg5,
+//                    &mut smsg6,
+//                    &mut smsg7,
+//                    str_trx_bad);
+          
+//                    }
+//                 }
+//         }
+//     3=> {    
+//             if  compbool{
+//                   log!(&env, "svb1adrms");
+//                   let clonebuyer=  buyer.clone();
+//                   stringbool1=set_keyb   (&env , clonebuyer);
+//                   inummsg=inummsg+1;
+//                   if inummsg <8{
+//                      let str_rstkadm_st  = String::from_slice(&env, "Trx svb1adrms ok");
+//                      savemsg (&env, inummsg, &mut smsg1, &mut smsg2,
+//                      &mut smsg3,
+//                      &mut smsg4,
+//                      &mut smsg5,
+//                      &mut smsg6,
+//                      &mut smsg7,
+//                      str_rstkadm_st);
+//                      }
+//             }else {
+//                 inummsg=inummsg+1;
+//                 if inummsg <8{
+//                    savemsg (&env, inummsg, &mut smsg1, &mut smsg2,
+//                    &mut smsg3,
+//                    &mut smsg4,
+//                    &mut smsg5,
+//                    &mut smsg6,
+//                    &mut smsg7,
+//                    str_trx_bad);
+//                 }
+//             }
+   
+//         }
+//     4=> {     log!(&env, "maintenance");
+//               stringbool1=dummyfunc   (&env , &user);
+//         }
+//     5=> {     log!(&env, "offline");
+//               stringbool1=dummyfunc   (&env , &user);
+//         }
+//     6=> {     log!(&env, "reactivation");
+//               stringbool1=dummyfunc   (&env , &user);
+//         }
+//     7=> {     
+//               inummsg=inummsg+1;
+//               if inummsg <8
+//                {
+//                      let str_f7  = String::from_slice(&env, "Function 7");
+//                      savemsg (&env, inummsg, &mut smsg1, &mut smsg2,
+//                      &mut smsg3,
+//                      &mut smsg4,
+//                      &mut smsg5,
+//                      &mut smsg6,
+//                      &mut smsg7,
+//                      str_f7);
+        
+//                 }
+//                 if  compbool{
+//                     let kstatee = String::from_slice(&env, "E");
+//                     let result=set_state (&env,&kstatee);
+//                     match result {
+//                         Ok(code) => log!(&env, "ok {} Ok", code),
+//                         Err(code) => log!(&env, "Error {}", code),
+//                     }
+//                       inummsg=inummsg+1;
+//                       if inummsg <8{
+//                          let str_rstkadm_st  = String::from_slice(&env, "Trx svb1adrms ok");
+//                          savemsg (&env, inummsg, &mut smsg1, &mut smsg2,
+//                          &mut smsg3,
+//                          &mut smsg4,
+//                          &mut smsg5,
+//                          &mut smsg6,
+//                          &mut smsg7,
+//                          str_rstkadm_st);
+                
+//                         }
+//                 }else
+//                     {
+//                         inummsg=inummsg+1;
+//                         if inummsg <8{
+//                               savemsg (&env, inummsg, &mut smsg1, &mut smsg2,
+//                               &mut smsg3,
+//                               &mut smsg4,
+//                               &mut smsg5,
+//                               &mut smsg6,
+//                               &mut smsg7,
+//                               str_trx_bad);
+                  
+//                         }
+//                     }
+           
+//         }
+       
+//         8=> {
+//             if  compbool{
+//               mimodulo::function8(&env);
+//               let result=trx_proc (&env, &endstatefmsg)  ;
+//               match result {
+//                   Ok(code) => log!(&env, "ok {} Ok", code),
+//                   Err(code) => log!(&env, "Error {}", code),
+//               }
+//               inummsg=inummsg+1;
+//               if inummsg <8{
+//                    let fn8ok  = String::from_slice(&env, "Function 8 ok");
+//                    savemsg (&env, inummsg, &mut smsg1, &mut smsg2,&mut smsg3,
+//                    &mut smsg4,&mut smsg5,&mut smsg6,&mut smsg7, fn8ok);
+//                     }
+//           }else
+//               {   
+//                   inummsg=inummsg+1;
+//                   if inummsg <8{savemsg (&env, inummsg, &mut smsg1, &mut smsg2,&mut smsg3,
+//                         &mut smsg4,&mut smsg5,&mut smsg6,&mut smsg7,str_trx_bad);}
+//                }
+     
+//   }
+//   9=> {
+   
+//       if  compbool{
+//           mimodulo::function9(&env);
+//           let result=trx_proc (&env, &endstatefmsg)  ;
+//           match result {
+//               Ok(code) => log!(&env, "ok {} Ok", code),
+//               Err(code) => log!(&env, "Error {}", code),
+//           }
+//           inummsg=inummsg+1;
+//           if inummsg <8{
+//                let fnok  = String::from_slice(&env, "Function 9 ok");
+//                savemsg (&env, inummsg, &mut smsg1, &mut smsg2,&mut smsg3,
+//                &mut smsg4,&mut smsg5,&mut smsg6,&mut smsg7, fnok);
+//                 }
+//       }else
+//           {   
+//               inummsg=inummsg+1;
+//               if inummsg <8{savemsg (&env, inummsg, &mut smsg1, &mut smsg2,&mut smsg3,
+//                     &mut smsg4,&mut smsg5,&mut smsg6,&mut smsg7,str_trx_bad);}
+//            }
+ 
+// }
+// 10=> {
+   
+//     if  compbool{
+//         mimodulo::function10(&env);
+//         let result=trx_proc (&env, &endstatefmsg)  ;
+//         match result {
+//             Ok(code) => log!(&env, "ok {} Ok", code),
+//             Err(code) => log!(&env, "Error {}", code),
+//         }
+//         inummsg=inummsg+1;
+//         if inummsg <8{
+//              let fnok  = String::from_slice(&env, "Function 10 ok");
+//              savemsg (&env, inummsg, &mut smsg1, &mut smsg2,&mut smsg3,
+//              &mut smsg4,&mut smsg5,&mut smsg6,&mut smsg7, fnok);
+//               }
+//     }else
+//         {   
+//             inummsg=inummsg+1;
+//             if inummsg <8{savemsg (&env, inummsg, &mut smsg1, &mut smsg2,&mut smsg3,
+//                   &mut smsg4,&mut smsg5,&mut smsg6,&mut smsg7,str_trx_bad);}
+//          }
+
+// }
+//     _=> {
+//         log!(&env, "no se ???");}
     
-} //match
+// } //match
 
 
 //============================================================
@@ -525,32 +667,32 @@ mensaje1=clonemsg;
  let num: i32 = str.parse().unwrap();
  log!(&env, "string to  number {}", num);
 
-let colu1: u32=9999;
-let fila1: u32=9999;
-     let messages = ["message1", "message2", "message3"];
-     if let Some(message) = get_message(&messages, 1) {
-         log!(&env, "Message: {}", message);
-     } else {
-         log!(&env, "Invalid index");
-     }
+let colu1: u32=9997;
+let fila1: u32=9998;
 let mut colors = ["red", "green", "blue"];
    colors[0]="green";
    let s = String::from_slice(&env, colors[0]);
 
-let msg = "kmac2=deliverable2='beta' 2.0 December 02-2023-1155"; //version message
+let msg = "kmac v2.0 =stage 2-deliverable2='trial run' December 07-2023-1904"; //version message
+let traceon:bool = false;
 let sout = String::from_slice(&env, msg);
- return (ln1, count, fila1, colu1,vec![&env, 
+
+ return (
+    vec![&env, 
     smsg1, smsg2,
     smsg3, smsg4,
     smsg5, smsg6,
     smsg7, 
-    sout, old_message, message, stringbool1, stringbool2,stringbool3,stringbool4,
-    stringbool5,stringbool6,stringbool7,s,mensaje1],
+    sout, old_message, message
+    , stringbool1, stringbool2,stringbool3,stringbool4,
+    stringbool5,stringbool6,stringbool7
+    ],
      //veci32
      vec![&env, veci32[0], veci32[1], veci32[2],veci32[3], veci32[4], veci32[5],veci32[6], veci32[7], veci32[8],veci32[9],
      veci32[10], veci32[11], veci32[12],veci32[13], veci32[14], veci32[15],veci32[16], veci32[17], veci32[18],veci32[19]]
 
-);  
+);
+//}
       
 
 fn trx_proc( env:&Env , endstatefmsg:&String)->  Result<u32, ()> {
@@ -732,7 +874,7 @@ fn coldreset (env:&Env)->  Result<u32, ()>
    env.storage().persistent().set(&MCSTAT, &statecoldrst);
    return Ok(0);
 }
-    fn get_curr_st (env:&Env) -> String {
+   fn get_curr_st (env:&Env) -> String {
    let mut crstatec = String::from_slice(&env, "X");
    if is_init_stat(&env) { 
     crstatec = env
@@ -827,4 +969,7 @@ fn findcoor(matrix: [[i32; 6]; 6], index: i32) -> (usize, usize){
 }
 
  
+
+
 }
+
