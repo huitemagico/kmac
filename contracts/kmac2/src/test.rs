@@ -7,44 +7,48 @@
 
 use soroban_sdk::{
     String,
-    testutils::Address as _, 
-    Address, Env, 
+     Env,
 };
+use soroban_sdk::testutils::Address;
+//use soroban_sdk::xdr::ContractIdPreimage::Address;
 
 extern crate std;
 
 use crate::{KmacContract, KmacContractClient};
-//comm testing the corefn module:
+
 //use crate::corefn;
 //use crate::mimodulo;
 use crate::kmacusermod;
-//comm use crate::corefn::my_function;
-//comm ....................................
+
 #[test]
 fn test() {
 
-    //comm 
-    //comm 
-    let env = Env::default();
+   
 
+    let env = Env::default();
+    env.mock_all_auths();
 
 
        let contract_id = env.register_contract(None, KmacContract);
 
-let user_1 = Address::random(&env);
-std::println!("user_1 from let user_1 = Address::random(&env);{:#?}", user_1);
+//let user_2 = Address::
+//  let user_1 = Address::generate(&env);
+    let user_1 = <soroban_sdk::Address as Address>::generate(&env);
+
+
+    std::println!("user_1 from let user_1 = Address::random(&env);{:#?}", user_1);
 
        let client = KmacContractClient::new    (&env, &contract_id);
 
 
     
     // init default trx
-    let first_trx = String::from_slice(&env, "ab");
+    let first_trx = String::from_str(&env, "ab");
     //
     // init first message
     std::println!("Testing core messages: Testing Message cldrst==1 ");
-    let cldrst = String::from_slice(&env, "cldrst");
-    let mut echo_response_tupla = 
+    let cldrst = String::from_str(&env, "cldrst");
+    let echo_response_tupla = 
               client.kmac        (&user_1,  &user_1,       &5,         &cldrst,  &first_trx);
     let expected_echo_response = get_value_trx1();
     assert_eq!(echo_response_tupla.1.get(0), expected_echo_response);
@@ -62,7 +66,7 @@ std::println!("user_1 from let user_1 = Address::random(&env);{:#?}", user_1);
 
    
    //let init_stat=corefn::xis_init_stat(&env);
-   let expected_state_trx1:Option <String>;
+   //let expected_state_trx1:Option <String>;
    
 //    expected_state_trx1 = get_state_trx1(&env);
 //    //expected_state_trx1a=expected_state_trx1
@@ -73,7 +77,7 @@ std::println!("user_1 from let user_1 = Address::random(&env);{:#?}", user_1);
 //
 // calling contract with message rstkadm ==2
     std::println!("Testing core messages: Testing Message rstkadm==2 ");
-    let rstkadm = String::from_slice(&env, "rstkadm");
+    let rstkadm = String::from_str(&env, "rstkadm");
     let echo_response_tupla = 
               client.kmac        (&user_1,  &user_1,       &5,         &rstkadm,  &first_trx);
     let expected_echo_response = get_value_trx2();
@@ -82,7 +86,7 @@ std::println!("user_1 from let user_1 = Address::random(&env);{:#?}", user_1);
 
 // calling contract with message rstkadm ==2
 std::println!("Testing core messages: Testing Message rstkadm==2 ");
-let rstkadm = String::from_slice(&env, "rstkadm");
+let rstkadm = String::from_str(&env, "rstkadm");
 let echo_response_tupla = 
           client.kmac        (&user_1,  &user_1,       &5,         &rstkadm,  &first_trx);
 let expected_echo_response = get_value_trx2();
@@ -105,7 +109,7 @@ std::println!("function7out {:?}",  f15out);
     fn _get_state_trx1 (env:&Env)  ->Option <String> {
         //
        let nostatems:String;
-       nostatems  = String::from_slice(&env, "MCSTAT not existed");
+       nostatems  = String::from_str(&env, "MCSTAT not existed");
        let my_option_string: Option<String> = Some(nostatems); //
        my_option_string
     }

@@ -1,9 +1,9 @@
 soroban contract invoke   --id $(cat .soroban/kmac2-id) \
       	--source  alice   \
-	--network AIVNET  \
+	--network testnet  \
        	--   kmac    \
-	--user GB4QRIXKO4K3QTQFPMFLJ7MSIDIWCBOYSK6C7Q43KJZZ7BX5IB4H74LF         \
+	--user GB7PDQICHJOSTEVMIQJJIQVZ762WKPYGG354DI34DBB67DJYKQQ4YNQD         \
 	--value 2    \
        	--message "buyerpay" \
-       	--buyer "GBGC5LMJOTEYRHND7AY3GMDNTQPHJ22WMUMWKVBD7D746MLAN3OGVXRP"    \
+       	--buyer "GB7PDQICHJOSTEVMIQJJIQVZ762WKPYGG354DI34DBB67DJYKQQ4YNQD"    \
        	--sender  "buyer"

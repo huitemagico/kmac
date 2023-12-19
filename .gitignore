@@ -6,6 +6,7 @@ contracts/kmac1a
 contracts/kmac1
 contracts/kmac2/target*
 contracts/kmac2/bk*
+contracts/kmac2/test*
 contracts/kmac2/Cargo.lock
 borrador*
 .soroban
