@@ -1,117 +1,65 @@
 # kmac
 # About this doc 
-README.md Version December 07 2023 20:46 <br />
-Please see the following wiki page for details:
-https://github.com/huitemagico/kmac/wiki/KMAC-Stage-2-%E2%80%90-Deliverable-2-Documentation
+README.md 'wikiVersion' December 20 2023 <br />
 
-This is README.md file of the kmac project, at the main branch at https://github.com/huitemagico/kmac
+# KMAC wiki
+This is the README page of KMAC.<br>
+ _Note for developer:For update purposes, this page resides in local environment and is uploaded to github. wiki._
 
- *IMPORTANT: *
-Please see the updated and detailed documentation in detail at following links:
+## What is KMAC?
+KMAC is the project for building a contract, with the [SOROBAN-SDK tools](https://soroban.stellar.org/).<br>
+KMAC implements a Finite State Machine [template](https://github.com/huitemagico/kmac/wiki/Design-Patterns#design-the-template-approach) with the purpose of simplifying new developments using this pattern.<br>
 
-| Content| Link |
-| --- | --- |
-| Proposal of the idea (Dashboard SCF)| [KMAC at SCF](https://dashboard.communityfund.stellar.org/scfawards/scf-20/panelreview/suggestion/103) |
-| KMAC Documentation main page| [KMAC wiki main page](https://github.com/huitemagico/kmac/wiki) |
-| Deliverables main chapter| [Deliverables main chapter ](https://github.com/huitemagico/kmac/wiki#deliverables) |
-| Documentation of Development Stage-1 (Deliverable 1) | [Documentation of Deliverable-1](https://github.com/huitemagico/kmac/wiki/KMAC-Deliverable-1) |
-| How Setup the KMAC environment  | [KMAC Setup](https://github.com/huitemagico/kmac/wiki/KMAC-Setup) |
-| User Manual of KMAC| [KMAC User Manual](https://github.com/huitemagico/kmac/wiki/KMAC-User-Manual) |
-|  Documentation of Development Stage-2 (Deliverable 2) | [Stage 2 -Deliverable-2] (https://github.com/huitemagico/kmac/wiki/kmac-Stage-2-%E2%80%90-Deliverable-2-Documentation) |
-|  Design Patterns(kmac2.0 Deliverable 2)...in progress | [Stage 2] (https://github.com/huitemagico/kmac/wiki/Design-Patterns) |
+![Vending Machine Example](https://github.com/huitemagico/kmac/blob/main/pictures/kmcorefsmdiagram10.vpd.png)
 
+The KMAC program has implemented the template and has provided an example of using this template. 
 
+Really, we could see KMAC as [three different points of view](https://github.com/huitemagico/kmac/wiki/KMAC-User-Manual#what-is-kmac-the-three-views-of-kmac-), depending of your interest:<br>
+(1) The KMAC template program, (2) the KMAC Vending Machine model application example, and (3) the KMAC user extensions feature.
 
-# What is KMAC?
-`@kmac` is a contract build with SOROBAN-SDK that makes an  implementation of an Finite State Machine template. <br />
-[GitHub url](https://github.com/huitemagico/kmac)
+## How do I build KMAC?
+The KMAC project intends to utilize [well-known design patterns](https://github.com/huitemagico/kmac/wiki/Design-Patterns).<br>
+The primary goal is to practice implementing these features. The intention is to provide easily understandable and reusable components through this approach. This aligns with the final goal of KMAC, which is to be an Educational Project.
 
-![Kmac architecture](pictures/kmac03.vpd.png)
+## About the architecture of KMAC-
+### Extensible
+KMAC providing [extensible functions capabilities](https://github.com/huitemagico/kmac/wiki/KMAC%E2%80%90extending-feature:-How-add-user-functions).<br>
+This means that you can implement other examples of systems based on Finite State Machine model,  **without the need to code the logic** of the Finite State Machine flow. You only need to focus on programming the specific 'user' functions for your new model.
 
- 
-# How clone, run and test 
-
-## Soroban version
-The setup use soroban version: 
-```bash
-$ soroban -V
-soroban 20.0.0-rc2 (1c49aed3badc374d46b340b5212a745703c524b2)
-```
- 
-Important: These instructions are for using the 'kmac2' version on the Testnet updated as of November 22, 2023. Keep in mind that the instructions are for an unstable version and need to be updated accordingly :https://soroban.stellar.org/docs/getting-started/deploy-to-testnet
-
-## (1) Environment setup 
-
- Please refer to official soroban setup instructions: https://soroban.stellar.org/docs/getting-started/setup
- The RUSTC version should be rustc 1.72 or newer.
-
-## (2) git clone from github 
-Version (in progress) of "Stage-2" at https://github.com/huitemagico/kmac/tree/main/contracts/kmac2
-
-git clone  https://github.com/huitemagico/kmac
-cd contracts/kmac2
-
-## cargo, build and run.
-
-Once the program is downloaded on the local disk, see the steps below:
-
-(1)
- ```bash
-cd kmac2
-
-cargo test -- --nocapture
- ```
-Note: the --nocapture  explanation:
- [Display Options](https://doc.rust-lang.org/cargo/commands/cargo-test.html#display-options)
- By default the Rust test harness hides output from test execution to keep results readable. Test output can be recovered (e.g., for debugging) by passing --nocapture to the test binaries:
-
-(2) soroban contract build --profile release-with-logs
-
-Steps 3 and 4 deleted.
-
-(5) To view the stored values:
-Use readcont.sh 
-
- 
-(6) Overview of the steps
-
-(I)
-Configuring the CLI for Testnet
- https://soroban.stellar.org/docs/getting-started/setup
-
-Configuring the net AIVNET:
-   soroban config network add  AIVNET   --rpc-url https://soroban-testnet.stellar.org:443   
-   --network-passphrase "Test SDF Network ; September 2015"
-
- (II)
-cargo test -- --nocapture
-
-soroban contract build --profile release-with-logs
-
-soroban contract deploy   --wasm target/wasm32-unknown-unknown/release-with-logs/kmac2.wasm     --source alice   --network AIVNET
-
-This command produce an address
-This address insert here:
-echo "CAVGBSIM2EVCQJKPZMMF4X5PFQZ6MDIZCJBC4AKN2VK335H4ZW4K3THT" > .soroban/kmac2-id
-
-(III) Invoke
-soroban contract invoke   --id $(cat .soroban/kmac2-id) \
-        --source  alice   \
-  --network AIVNET  \
-        --   kmac    \
-  --user GB4QRIXKO4K3QTQFPMFLJ7MSIDIWCBOYSK6C7Q43KJZZ7BX5IB4H74LF         \
-  --value 2    \
-        --message "cldrst"    \
-        --buyer "GBGC5LMJOTEYRHND7AY3GMDNTQPHJ22WMUMWKVBD7D746MLAN3OGVXRP"    \
-        --sender  "kreator"
+See the next image "KMAC architecture diagram"
+![kmac Architecture Diagram](https://github.com/huitemagico/kmac/blob/main/pictures/kmac03.vpd.png)
 
 
-For details of the transactions, 
-[please see the chapter "Stage 1- Deliverable-1"] (https://github.com/huitemagico/kmac/wiki/KMAC-Deliverable-1)
-[please see the chapter "Stage 2 -Deliverable-2"] (https://github.com/huitemagico/kmac/wiki/kmac-Stage-2-%E2%80%90-Deliverable-2-Documentation)
-For details of the setup process, [please see the chapter "Setup"](https://github.com/huitemagico/kmac/wiki/KMAC-Setup)
+## For installing the environment 
+Please refer to [kmac setup](https://github.com/huitemagico/kmac/wiki/KMAC-Setup)
 
-(7) More on playing with the program
-Please see "user manual"
-https://github.com/huitemagico/kmac/wiki/KMAC-User-Manual
+## Table of contents 
+For easier navigation of the documentation, you can use the table below (alphabetically ordered) or go directly to the [main doc page](https://github.com/huitemagico/kmac/wiki).
+
+| Content| Link |Purpose|
+| --- | --- |---|
+| architecture| [KMAC architecture](https://github.com/huitemagico/kmac/wiki/KMAC%E2%80%90technical-description#the-kmac-architecture-diagram) |Review of KMAC architecture|
+|dashboard| [dashboard](https://github.com/huitemagico/kmac/wiki/Design-Patterns#coding-the-kmac-dashboard-utility-for-inspecting-results) |How understand the output of the vending machine program|
+|dashboard| [dashboard](https://github.com/huitemagico/kmac/wiki/KMAC-User-Manual#the-vending-machine-example-version-december-19-2023-output-example-and-explanation) |How understand the output of the vending machine program|
+|deliverables (history of)| [deliverables (history)](https://github.com/huitemagico/kmac/wiki/Deliverables-proposal) |Deliverables description|
+|deliverables page| [Deliverables main chapter ](https://github.com/huitemagico/kmac/wiki#deliverables) |Deliverables achieved description|
+|finite state machine (FSM)| [finite state machine](https://github.com/huitemagico/kmac/wiki/KMAC%E2%80%90extending-feature:-How-add-user-functions#the-complete-fsm-diagram-of-the-vending-machine) |Finite state machine how to|
+|flow diagram| [flow diagram](https://github.com/huitemagico/kmac/wiki/KMAC%E2%80%90technical-description#the-flow-diagram-of-kmac) |flow diagram|
+|functions explained| [functions](https://github.com/huitemagico/kmac/wiki/KMAC%E2%80%90technical-description#some-functions-explained) |description of (some) function of KMAC|
+|matrix of functions| [matrix](https://github.com/huitemagico/kmac/wiki/KMAC%E2%80%90extending-feature:-How-add-user-functions#m-a-t-r-i-x-n-u-m) |understand how use the matrix for build a new program |
+|modules (of kmac)| [modules](https://github.com/huitemagico/kmac/wiki/KMAC%E2%80%90technical-description#modules) |description of KMAC modules|
+|network configuration| [modules](https://github.com/huitemagico/kmac/wiki/Configuring-network-and-identity#how-to-configure-network-and-identity) |how configure the network|
+|identity configuration| [identity](https://github.com/huitemagico/kmac/wiki/Configuring-network-and-identity#how-to-configure-network-and-identity) |how configure the identities|
+|SCF Dashboard | [KMAC at SCF](https://dashboard.communityfund.stellar.org/scfawards/scf-20/panelreview/suggestion/103) |KMAC at SCF|
+|shell comands| [shell comands for the vending machine](https://github.com/huitemagico/kmac/wiki/KMAC-User-Manual#the-vending-machine-example-the-sequence-of-command-shell-transactions-takeaways) |shell commands for run the vending machine example|
+|storage management| [storage management](https://github.com/huitemagico/kmac/wiki/KMAC%E2%80%90technical-description#storage-management-use-cases) |how KMAC use storage|
+|security| [security](https://github.com/huitemagico/kmac/wiki/KMAC%E2%80%90technical-description#notes-about-security-and-require_auth) |how KMAC deals with|
+|soroban rust sdk| [soroban rust sdk instructions](https://github.com/huitemagico/kmac/wiki/KMAC%E2%80%90technical-description#soroban-sdk-rust-instructions) |selected RUST instructions |
+| setup KMAC | [KMAC Setup](https://github.com/huitemagico/kmac/wiki/KMAC-Setup) |how setup run and test the KMAC|
+|template| [template](https://github.com/huitemagico/kmac/wiki/KMAC-User-Manual#c-how-to-extend-the-template) |the template KMAC|
+|template| [template design approach](https://github.com/huitemagico/kmac/wiki/Design-Patterns#design-the-template-approach) |the template KMAC|
+|user transactions| [user transactions](https://github.com/huitemagico/kmac/wiki/KMAC%E2%80%90technical-description#the-function11-function12-at-kmacusermodrs) |user functions how to|
+|user Manual of KMAC| [KMAC User Manual](https://github.com/huitemagico/kmac/wiki/KMAC-User-Manual) |"user manual"|
+|vending machine| [vending machine](https://github.com/huitemagico/kmac/wiki/KMAC-User-Manual#b-the-example-of-the-vending-machine) |The Vending Machine example|
+|vending machine output| [vending machine dashboard output](https://github.com/huitemagico/kmac/wiki/KMAC-User-Manual#the-vending-machine-example-version-december-19-2023-output-example-and-explanation) |the vending machine output|
 
