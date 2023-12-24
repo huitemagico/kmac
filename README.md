@@ -1,6 +1,6 @@
 # kmac
 # About this doc 
-README.md 'wikiVersion' December 20 2023 <br />
+README.md 'wikiVersion' December 24 2023. Updated the [test module](https://github.com/huitemagico/kmac/wiki/test-module). <br />
 
 # KMAC wiki
 This is the README page of KMAC.<br>
@@ -29,6 +29,9 @@ This means that you can implement other examples of systems based on Finite Stat
 See the next image "KMAC architecture diagram"
 ![kmac Architecture Diagram](https://github.com/huitemagico/kmac/blob/main/pictures/kmac03.vpd.png)
 
+## About the actors involved in KMAC
+![Actor use cases](https://github.com/huitemagico/kmac/blob/main/pictures/actorsusecases.vpd.png)
+[Actors Use Cases](https://github.com/huitemagico/kmac/wiki/KMAC-actors-use-cases)
 
 ## For installing the environment 
 Please refer to [kmac setup](https://github.com/huitemagico/kmac/wiki/KMAC-Setup)
@@ -55,10 +58,12 @@ For easier navigation of the documentation, you can use the table below (alphabe
 |storage management| [storage management](https://github.com/huitemagico/kmac/wiki/KMAC%E2%80%90technical-description#storage-management-use-cases) |how KMAC use storage|
 |security| [security](https://github.com/huitemagico/kmac/wiki/KMAC%E2%80%90technical-description#notes-about-security-and-require_auth) |how KMAC deals with|
 |soroban rust sdk| [soroban rust sdk instructions](https://github.com/huitemagico/kmac/wiki/KMAC%E2%80%90technical-description#soroban-sdk-rust-instructions) |selected RUST instructions |
+|sequence diagram | [sequence diagram for Vending Machine example](https://github.com/huitemagico/kmac/wiki/KMAC-User-Manual#vending-machine-example-sequence-diagram) |the sequence of transactions|
 | setup KMAC | [KMAC Setup](https://github.com/huitemagico/kmac/wiki/KMAC-Setup) |how setup run and test the KMAC|
 |template| [template](https://github.com/huitemagico/kmac/wiki/KMAC-User-Manual#c-how-to-extend-the-template) |the template KMAC|
 |template| [template design approach](https://github.com/huitemagico/kmac/wiki/Design-Patterns#design-the-template-approach) |the template KMAC|
 |user transactions| [user transactions](https://github.com/huitemagico/kmac/wiki/KMAC%E2%80%90technical-description#the-function11-function12-at-kmacusermodrs) |user functions how to|
+|use cases-actors|[Actor use cases](https://github.com/huitemagico/kmac/wiki/KMAC-actors-use-cases)|Who-is-who at KMAC approach|
 |user Manual of KMAC| [KMAC User Manual](https://github.com/huitemagico/kmac/wiki/KMAC-User-Manual) |"user manual"|
 |vending machine| [vending machine](https://github.com/huitemagico/kmac/wiki/KMAC-User-Manual#b-the-example-of-the-vending-machine) |The Vending Machine example|
 |vending machine output| [vending machine dashboard output](https://github.com/huitemagico/kmac/wiki/KMAC-User-Manual#the-vending-machine-example-version-december-19-2023-output-example-and-explanation) |the vending machine output|

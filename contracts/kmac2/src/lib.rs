@@ -48,7 +48,8 @@ pub struct KmacContract;
 
 #[contractimpl]
 impl KmacContract {
-
+//let response_tupla =
+//               client.kmac        (&user_1,  &user_1,       &5,         &cldrst,  &first_trx);
        pub fn kmac    (env: Env,  user: Address, buyer: Address, _value: u32, message: String, _sender:String ) -> 
        //(  u32,u32, u32, u32, Vec<String>, bool,i32,i32,i32,i32,i32,i32) {
         (  
