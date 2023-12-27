@@ -1,10 +1,10 @@
 # kmac
 # About this doc 
-README.md 'wikiVersion' December 24 2023. Updated the [test module](https://github.com/huitemagico/kmac/wiki/test-module). <br />
+README.md  December 26 2023. Updated the [test module](https://github.com/huitemagico/kmac/wiki/test-module). <br />
 
 # KMAC wiki
 This is the README page of KMAC.<br>
- _Note for developer:For update purposes, this page resides in local environment and is uploaded to github. wiki._
+ 
 
 ## What is KMAC?
 KMAC is the project for building a contract, with the [SOROBAN-SDK tools](https://soroban.stellar.org/).<br>
