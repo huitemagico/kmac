@@ -1,5 +1,6 @@
 #![no_std]
-/// kmac2.0 delivery stage 2 rev December 19, 2023
+// kmac 1.0.0 final delivery December 31, 2023
+/// kmac beta2.0 delivery stage 2 rev December 28, 2023
 /// kmac implement an finite state machine template.
 /// For how to use see https://github.com/huitemagico/kmac/wiki
 /// The lib.rs is the main program. Uses an external module called kmacusermod.rs
@@ -12,6 +13,8 @@
 /// 
 mod kmacusermod;
 use soroban_sdk::{contract, contractimpl,contracttype, symbol_short,Address,  vec, Env, String, Symbol, Vec,log,BytesN};
+use soroban_sdk::IntoVal;
+
 #[contracttype]
 pub enum DataKey {
     Kstad(Address), //Counter--> Kreator Stored Address
@@ -50,13 +53,36 @@ pub struct KmacContract;
 impl KmacContract {
 //let response_tupla =
 //               client.kmac        (&user_1,  &user_1,       &5,         &cldrst,  &first_trx);
+    // let response_tupla2 =
+//         test.contract.kmac        (&user_1,  &user_1,       &5,         &rstkadm,  &nouse);
        pub fn kmac    (env: Env,  user: Address, buyer: Address, _value: u32, message: String, _sender:String ) -> 
        //(  u32,u32, u32, u32, Vec<String>, bool,i32,i32,i32,i32,i32,i32) {
         (  
              Vec<String>, Vec<i32>) {
-  
 
 
+
+
+
+
+let user01=user.clone();
+    let user02=user01.clone();
+    let _user03=user02.clone();
+
+    let buyer01=buyer.clone();
+    let buyer02=buyer01.clone();
+    let _message01=message.clone();
+    let _message02=message.clone();
+    /*
+    if _value==5{
+        user.require_auth();
+    }
+
+     */
+
+    //user.require_auth_for_args((user03, buyer02, _value, message01, _sender).into_val(&env));
+    log!(&env, "user  {} ",user01 );
+    log!(&env, "buyer  {} ",buyer01 );
 env.events()
             .publish((COUNTER, symbol_short!("buy")), buyer.clone());
 let gral_trace :bool=false;
@@ -268,12 +294,13 @@ env.events()
 
 //let strfalse  = String::from_str(&env, "KeyNoExists");
 //let kstradrex=String::from_str(&env, "(srstkadm)KSTADR existed!-panic?");
-let cloneuser=  user.clone();
+let cloneuser=  user02.clone();
 
 log!(&env, "cloneuser: {}", cloneuser);
 let cloneuser2= cloneuser.clone();
 log!(&env, "cloneuser2: {}", cloneuser2);
 let cloneuser3=  cloneuser2.clone();
+let cloneuser4=  cloneuser3.clone();
 
 //
 let crow:usize ;
@@ -464,6 +491,37 @@ fnname=n_to_str (&env,fnnumber);
      savemsg (&env, inummsg, &mut smsg1, &mut smsg2,&mut smsg3,
      &mut smsg4,&mut smsg5,&mut smsg6,&mut smsg7,
      fnname  );}
+
+//
+    /*if _value==5{
+        user.require_auth();
+    }
+
+     */
+
+
+    match kndt  {
+        1=>{
+            if _value==5{
+            cloneuser4.require_auth();}
+        }
+        2=>{
+            if _value==5{
+                cloneuser4.require_auth();}
+        }
+        3=>{ buyer02.require_auth();
+            /*if _value==5{
+                buyer02.require_auth();
+            }
+
+             */
+        }
+       //abnormal situation, bad fnnumber ?
+        _=> {      cloneuser4.require_auth();}
+        //not handled error here
+    }
+
+//
 // Here I have the following situation:----------------------------------------------BEGIN
 //-----------------------------------------------------------------------------------
 // (I)  kndt : kind of trx
@@ -594,7 +652,7 @@ if fnnumber ==1 || fnnumber ==2 || fnnumber ==3 {
         let us_msg:String;
         //fn user_fn(env:&Env ,nextstate:&i32,fnnumber:&i32, usr_ad_fn:&Address, buyer_ad:&Address)->(String, bool){
 
-         (us_msg, us_b)=   user_fn(&env,&endstatefmsg, &fnnumber);
+         (us_msg, us_b)=   user_fn(&env,&endstatefmsg, &fnnumber,buyer02,_value);
          if us_b {
              //let ms_uf_procok= String::from_str(&env, "USER Function Proc OK");
              inummsg=inummsg+1; if inummsg <8{ savemsg (&env, inummsg, &mut smsg1, &mut smsg2, &mut smsg3,&mut smsg4, &mut smsg5,
@@ -633,7 +691,7 @@ curr_state2=get_curr_st(&env);
 let mut colors = ["red", "green", "blue"];
    colors[0]="green";
 
-let msg = "kmac v3.0 = final deliverable2= December 19 20:49:-2023"; //version message
+let msg = "kmac 1.0.0 = final deliverable= prod version= December 31 2023"; //version message
 let sout = String::from_str(&env, msg);
 
  return (
@@ -753,12 +811,22 @@ fn val_usr_cndk ( st_ad_cndu: &u32)->bool{
 
 
 
-fn user_fn(env:&Env ,nextstate:&String,fnnumber:&i32)->(String, bool){
+fn user_fn(env:&Env ,nextstate:&String,fnnumber:&i32, _buyer:Address, _auth_flag:u32)->(String, bool){
     //usr_ad_fn:&Address,
     //,  buyer_ad:&Address
     //1,2,3 function number defined by design are "admin core".
     // Rest of functions could be admin flow, or user.
+    //===========================================================
     //let fn_msg= String::from_str(&env, "function code but trx_proc Error! (internal)");
+
+
+   /* if auth_flag==5{
+        buyer.require_auth();
+    }
+
+
+    */
+
     let fn_msg :String;
     let fn_err= String::from_str(&env, "function code but trx_proc Error! (internal)");
     let cc:bool;
@@ -777,10 +845,10 @@ fn user_fn(env:&Env ,nextstate:&String,fnnumber:&i32)->(String, bool){
         6=>{
             (fn_msg, cc)= kmacusermod::function6(&env);
         }
-        7=>{
+        7=>{ //buyer.require_auth();
             (fn_msg, cc)= kmacusermod::function7(&env);
         }
-        8=>{
+        8=>{//buyer.require_auth();
             (fn_msg, cc)= kmacusermod::function8(&env);
         }
         9=>{
@@ -1151,24 +1219,6 @@ fn reset_key2 (env:&Env ,user:&Address)->bool{
     env.storage().persistent().set(&MCSTAT, &stateb);
     return true;
 }
-
-// #[allow(dead_code)]
-// fn reset_key (env:&Env ,kstradrex:String, strfalse2:String, user:Address)->(String, String){
-//     let stringbool3: String;//::from_str(&env, "trueleyy");
-//     let stateb: String;
-//     stateb = String::from_str(&env, "B");
-//     log!(&env, "reset key kreator");
-//     if is_initialized(&env) { // verifica si existia &KSTADR
-//         stringbool3=kstradrex;//(savekadmessage)KSTADR existed!-panic?");
-        
-//     }else 
-//      {
-//         stringbool3  =strfalse2;
-//     }
-//         env.storage().persistent().set(&KSTADR, &user);
-//         env.storage().persistent().set(&MCSTAT, &stateb);
-//         return (stringbool3,stateb);
-// }
 fn set_state (env:&Env, newstate:&String)->  Result<u32, ()>
 { 
    env.storage().persistent().set(&MCSTAT, newstate);
@@ -1193,42 +1243,6 @@ fn coldreset (env:&Env)-> bool
     }
     return crstatec
 }
-// fn cmpaddr (env:&Env,newaddr:Address) -> (String,bool){
-//     let booleantype :bool;
-//     let  mkstrnoex= String::from_str(&env, "stored KSTADR didnt existed");
-//     let  mkstradeq= String::from_str(&env, "new KSTADR == stored KSTADR (??)");
-//     let  mkstradneq= String::from_str(&env, "new KSTADR <> stored KSTADR (??)");
-//     let  meqadr:String;
-//     let kstoredadd: Address;
-//     if is_initialized(&env) { 
-//          kstoredadd = env
-//             .storage()
-//             .persistent()
-//             .get(&KSTADR)
-//             .unwrap();
-//         let clonestored=  kstoredadd.clone();
-//         if clonestored==newaddr
-//         {
-//              booleantype=true;
-//              log!(&env, "stored KSTADR== new");
-//              meqadr=mkstradeq; 
-//         } else 
-//            {
-//                log!(&env, "stored KSTADR <> new");
-//                booleantype=false;
-//                meqadr=mkstradneq;
-//             }
-        
-//     }else 
-//         {
-//             log!(&env, "stored KSTADR didnt existed.");
-//             booleantype=false;
-//             meqadr=mkstrnoex;
-//         }
-
-     
-//     return (meqadr, booleantype);
-// }
 //storage function, query if a key exist
 //Next version, its necessary having only one function(?)
 //See 

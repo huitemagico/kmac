@@ -1,7 +1,8 @@
 # kmac
 # About this doc 
-README.md  December 26 2023. Updated the [test module](https://github.com/huitemagico/kmac/wiki/test-module). <br />
-
+README.md 'wikiVersion' December 31 2023. Updated the [test module](https://github.com/huitemagico/kmac/wiki/test-module). <br />
+# KMAC VERSION
+"Final Production Version" 1.0.0, December 31, 2023
 # KMAC wiki
 This is the README page of KMAC.<br>
  

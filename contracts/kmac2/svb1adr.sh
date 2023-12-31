@@ -1,9 +1,11 @@
 soroban contract invoke   --id $(cat .soroban/kmac2-id) \
-      	--source  alice   \
+      	--source  kreator   \
 	--network testnet  \
        	--   kmac    \
-	--user GBXGXJGCAR2TNZFQPP6IZQU7P6YPZ75BVDPKCHTHQDLTBOV2THHBAROH         \
-	--value 2    \
+	--user GDLTFWZTH3JXPJX4LHRJU5L7WDBZ2CQKTRA3Z57HUKP25H35ICQZRMFH  \
+	--value 5    \
        	--message "svb1adr"    \
-       	--buyer "GB7PDQICHJOSTEVMIQJJIQVZ762WKPYGG354DI34DBB67DJYKQQ4YNQD"    \
+       	--buyer "GBB34D6XSHK6TSCE62Z43SWJ4RO22GHN5XKBASMPEXLDDF5QFOHE4TW2"    \
        	--sender  "kreator"
+###GDLTFWZTH3JXPJX4LHRJU5L7WDBZ2CQKTRA3Z57HUKP25H35ICQZRMFH
+###GBB34D6XSHK6TSCE62Z43SWJ4RO22GHN5XKBASMPEXLDDF5QFOHE4TW2
