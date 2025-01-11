@@ -1,5 +1,6 @@
 # kmac
 # About this doc 
+README.md 'wikiVersion' January 05, 2025. New jpg showing the mindmap of the system context of the KMAC program. See wiki doc in this same site. <br />
 README.md 'wikiVersion' December 31 2023. Updated the [test module](https://github.com/huitemagico/kmac/wiki/test-module). <br />
 README.md 'wikiVersion' Jun 19 2024 18:30. Updated setup(https://github.com/huitemagico/kmac/wiki/KMAC-Setup). <br />
 # KMAC VERSION
@@ -43,6 +44,7 @@ For easier navigation of the documentation, you can use the table below (alphabe
 
 | Content| Link |Purpose|
 | --- | --- |---|
+| context |[Global context] | Global Context of the KMAC program|
 | architecture| [KMAC architecture](https://github.com/huitemagico/kmac/wiki/KMAC%E2%80%90technical-description#the-kmac-architecture-diagram) |Review of KMAC architecture|
 |dashboard| [dashboard](https://github.com/huitemagico/kmac/wiki/Design-Patterns#coding-the-kmac-dashboard-utility-for-inspecting-results) |How understand the output of the vending machine program|
 |dashboard| [dashboard](https://github.com/huitemagico/kmac/wiki/KMAC-User-Manual#the-vending-machine-example-version-december-19-2023-output-example-and-explanation) |How understand the output of the vending machine program|
