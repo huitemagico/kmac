@@ -1,4 +1,17 @@
 # kmac
+# KMAC Project
+
+![Visitas](https://komarev.com/ghpvc/?username=huitemagico&repo=kmac&color=blue)
+
+Bienvenido al proyecto KMAC, diseñado para compartir recursos e interfaces con desarrolladores. Este proyecto busca mejorar la experiencia en la programación de contratos inteligentes.
+
+## Características
+- Modulares
+- Escalables
+- Optimizado para desarrolladores
+
+¡Gracias por tu visita!
+
 # About this doc 
 README.md 'wikiVersion' January 05, 2025. New jpg showing the mindmap of the system context of the KMAC program. See wiki doc in this same site. <br />
 README.md 'wikiVersion' December 31 2023. Updated the [test module](https://github.com/huitemagico/kmac/wiki/test-module). <br />
