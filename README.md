@@ -2,7 +2,7 @@
 # About this doc 
 README.md 'wikiVersion' January 05, 2025. New jpg showing the mindmap of the system context of the KMAC program. See wiki doc in this same site. <br />
 README.md 'wikiVersion' December 31 2023. Updated the [test module](https://github.com/huitemagico/kmac/wiki/test-module). <br />
-README.md 'wikiVersion' Jun 19 2024 18:30. Updated setup(https://github.com/huitemagico/kmac/wiki/KMAC-Setup). <br />
+README.md 'wikiVersion' Jun 19 2024 20:23. Updated setup(https://github.com/huitemagico/kmac/wiki/KMAC-Setup). <br />
 # KMAC VERSION
 "Final Production Version" 1.0.0, December 31, 2023
 # KMAC wiki
